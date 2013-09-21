@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
+    <url>
+        <loc>
+            http://yoursite.com/blog/2013/09/15/o-que-faz-o-star-antes-de-um-parametro-em-um-metodo-ruby/
+        </loc>
+        <lastmod>2013-09-21T00:03:13-03:00</lastmod>
+    </url>
+    <url>
+        <loc>http://yoursite.com/</loc>
+        <lastmod>2013-09-21T00:03:13-03:00</lastmod>
+    </url>
+    <url>
+        <loc>http://yoursite.com/blog/archives/</loc>
+        <lastmod>2013-09-21T00:03:13-03:00</lastmod>
+    </url>
+    <url>
+        <loc>http://yoursite.com/robots.txt</loc>
+        <lastmod>2013-09-20T23:39:38-03:00</lastmod>
+    </url>
+</urlset>
