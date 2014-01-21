@@ -1,13 +1,16 @@
 ---
 layout: post
-title: "O que faz o \"*\" antes de um parâmetro em um método ruby?"
+title: "O que é o splat operator do ruby?
 date: 2013-09-15 13:25
 comments: true
-categories: 
+categories: ruby
 ---
-Esses dias olhando um código ruby na internet vi um trecho como esse: `def example(*b)`
-O que esse código faz não vem ao caso, mas olhei o `*b` e pensei, oque que é esse * antes da variavel me veio na hora ponteiro, mas ruby não possui ponteiros, então oque `*b` faz?
-Resumindo é a sintaxe para vArgs em ruby, ex:
+
+faz o \"*\" antes de um parâmetro em um método ruby?"
+
+Esses dias olhando código no GitHub vi um trecho como esse: `def example(*b)`
+O que esse código faz não vem ao caso, mas olhei o `*b` e pensei, oque que é esse * antes da variável me veio na hora ponteiro, mas ruby não possui ponteiros, então oque `*b` faz?
+pesquisei sobre e resumindo é a sintaxe para splat operator em ruby, ex:
 
 ```ruby
     def example(*b)
@@ -15,8 +18,8 @@ Resumindo é a sintaxe para vArgs em ruby, ex:
     end
 
     example 1,2,3,4 # => 1 2 3 4
-    arr = [5,6,7,8]
 
+    arr = [5,6,7,8]
     example *arr # => 5 6 7 8
 ```
 
