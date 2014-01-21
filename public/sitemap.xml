@@ -2,20 +2,26 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>
-            http://yoursite.com/blog/2013/09/15/o-que-faz-o-star-antes-de-um-parametro-em-um-metodo-ruby/
+            http://alessandrodias.herokuapp.com/blog/2013/09/15/o-que-e-o-splat-operator-do-ruby/
         </loc>
-        <lastmod>2013-09-21T00:03:13-03:00</lastmod>
+        <lastmod>2014-01-21T01:11:57-02:00</lastmod>
     </url>
     <url>
-        <loc>http://yoursite.com/</loc>
-        <lastmod>2013-09-21T00:03:13-03:00</lastmod>
+        <loc>
+            http://alessandrodias.herokuapp.com/blog/2014/01/20/cuidado-ao-usar-super-em-seus-metodos/
+        </loc>
+        <lastmod>2014-01-21T01:50:58-02:00</lastmod>
     </url>
     <url>
-        <loc>http://yoursite.com/blog/archives/</loc>
-        <lastmod>2013-09-21T00:03:13-03:00</lastmod>
+        <loc>http://alessandrodias.herokuapp.com/robots.txt</loc>
+        <lastmod>2014-01-20T16:35:59-02:00</lastmod>
     </url>
     <url>
-        <loc>http://yoursite.com/robots.txt</loc>
-        <lastmod>2013-09-20T23:39:38-03:00</lastmod>
+        <loc>http://alessandrodias.herokuapp.com/blog/archives/</loc>
+        <lastmod>2014-01-21T01:50:58-02:00</lastmod>
+    </url>
+    <url>
+        <loc>http://alessandrodias.herokuapp.com/</loc>
+        <lastmod>2014-01-21T01:50:58-02:00</lastmod>
     </url>
 </urlset>

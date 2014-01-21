@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Alessandro Dias]]></title>
-  <link href="http://yoursite.com/atom.xml" rel="self"/>
-  <link href="http://yoursite.com/"/>
-  <updated>2013-09-21T01:02:48-03:00</updated>
-  <id>http://yoursite.com/</id>
+  <link href="http://alessandrodias.herokuapp.com/atom.xml" rel="self"/>
+  <link href="http://alessandrodias.herokuapp.com/"/>
+  <updated>2014-01-21T01:51:30-02:00</updated>
+  <id>http://alessandrodias.herokuapp.com/</id>
   <author>
     <name><![CDATA[Alessandro Dias Batista]]></name>
     
@@ -14,13 +14,97 @@
 
   
   <entry>
-    <title type="html"><![CDATA[O que faz o "*" antes de um parâmetro em um método ruby?]]></title>
-    <link href="http://yoursite.com/blog/2013/09/15/o-que-faz-o-star-antes-de-um-parametro-em-um-metodo-ruby/"/>
+    <title type="html"><![CDATA[Cuidado ao chamar métodos da classe pai]]></title>
+    <link href="http://alessandrodias.herokuapp.com/blog/2014/01/20/cuidado-ao-usar-super-em-seus-metodos/"/>
+    <updated>2014-01-20T19:59:00-02:00</updated>
+    <id>http://alessandrodias.herokuapp.com/blog/2014/01/20/cuidado-ao-usar-super-em-seus-metodos</id>
+    <content type="html"><![CDATA[<p>Lendo um pouco sobre herança em Ruby descobri uma coisa interessante, ao usar o método <code>super</code> em algum método, pode ocorrer da erro caso o desenvolvedor não preste atenção. Quando você redefine um método e chama <code>super</code> sem parêntesis e sem argumentos, o Ruby irá pegar os parâmetros passados para o método na subclasse passar de forma implícita para o método da superclasse, se os parâmetros do método na superclasse forem diferentes dos parâmetros no método redefinido irá resultar em erro.
+Exemplo:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Dad</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">hi</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;Hello&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">Class</span> <span class="no">Child</span> <span class="o">&lt;</span> <span class="no">Dad</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">hi</span>
+</span><span class='line'>    <span class="k">super</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;World&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">Child</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">hi</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">=&gt;</span> <span class="ss">ArgumentError</span><span class="p">:</span> <span class="n">wrong</span> <span class="n">number</span> <span class="n">of</span> <span class="n">arguments</span> <span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="mi">0</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Como resolver isso? Simples.
+Caso o método da superclasse não receba parâmetros chame o método super com parêntesis <code>super()</code>
+Exemplo:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Dad</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">hi</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;Hello&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">Class</span> <span class="no">Child</span> <span class="o">&lt;</span> <span class="no">Dad</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">hi</span>
+</span><span class='line'>    <span class="k">super</span><span class="p">()</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;World&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">Child</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">hi</span>
+</span><span class='line'><span class="no">Hello</span>
+</span><span class='line'><span class="no">World</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[O que é o splat operator do ruby?]]></title>
+    <link href="http://alessandrodias.herokuapp.com/blog/2013/09/15/o-que-e-o-splat-operator-do-ruby/"/>
     <updated>2013-09-15T13:25:00-03:00</updated>
-    <id>http://yoursite.com/blog/2013/09/15/o-que-faz-o-star-antes-de-um-parametro-em-um-metodo-ruby</id>
-    <content type="html"><![CDATA[<p>Esses dias olhando um código ruby na internet vi um trecho como esse: <code>def example(*b)</code>
-O que esse código faz não vem ao caso, mas olhei o <code>*b</code> e pensei, oque que é esse * antes da variavel me veio na hora ponteiro, mas ruby não possui ponteiros, então oque <code>*b</code> faz?
-Resumindo é a sintaxe para vArgs em ruby, ex:</p>
+    <id>http://alessandrodias.herokuapp.com/blog/2013/09/15/o-que-e-o-splat-operator-do-ruby</id>
+    <content type="html"><![CDATA[<p>Esses dias olhando código no GitHub vi um trecho como esse: <code>def example(*b)</code>
+O que esse código faz não vem ao caso, mas olhei o <code>*b</code> e pensei, oque que é esse * antes da variável me veio na hora ponteiro, mas ruby não possui ponteiros, então oque <code>*b</code> faz?
+pesquisei sobre e resumindo é a sintaxe para splat operator em ruby, ex:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -35,8 +119,8 @@ Resumindo é a sintaxe para vArgs em ruby, ex:</p>
 </span><span class='line'><span class="k">end</span>
 </span><span class='line'>
 </span><span class='line'><span class="n">example</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span> <span class="c1"># =&gt; 1 2 3 4</span>
-</span><span class='line'><span class="n">arr</span> <span class="o">=</span> <span class="o">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="o">]</span>
 </span><span class='line'>
+</span><span class='line'><span class="n">arr</span> <span class="o">=</span> <span class="o">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="o">]</span>
 </span><span class='line'><span class="n">example</span> <span class="o">*</span><span class="n">arr</span> <span class="c1"># =&gt; 5 6 7 8</span>
 </span></code></pre></td></tr></table></div></figure>
 

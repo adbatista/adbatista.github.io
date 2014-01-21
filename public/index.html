@@ -9,8 +9,7 @@
   <meta name="author" content="Alessandro Dias Batista">
 
   
-  <meta name="description" content="Esses dias olhando um código ruby na internet vi um trecho como esse: def example(*b)
-O que esse código faz não vem ao caso, mas olhei o *b e pensei &hellip;">
+  <meta name="description" content="Lendo um pouco sobre herança em Ruby descobri uma coisa interessante, ao usar o método super em algum método, pode ocorrer da erro caso o &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +18,7 @@ O que esse código faz não vem ao caso, mas olhei o *b e pensei &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yoursite.com">
+  <link rel="canonical" href="http://alessandrodias.herokuapp.com">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Alessandro Dias" type="application/atom+xml">
@@ -49,7 +48,7 @@ O que esse código faz não vem ao caso, mas olhei o *b e pensei &hellip;">
   
 <form action="http://google.com/search" method="get">
   <fieldset role="search">
-    <input type="hidden" name="q" value="site:yoursite.com" />
+    <input type="hidden" name="q" value="site:alessandrodias.herokuapp.com" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
   </fieldset>
 </form>
@@ -70,7 +69,118 @@ O que esse código faz não vem ao caso, mas olhei o *b e pensei &hellip;">
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2013/09/15/o-que-faz-o-star-antes-de-um-parametro-em-um-metodo-ruby/">O Que Faz O &#8220;*&#8221; Antes De Um Parâmetro Em Um Método Ruby?</a></h1>
+      <h1 class="entry-title"><a href="/blog/2014/01/20/cuidado-ao-usar-super-em-seus-metodos/">Cuidado Ao Chamar Métodos Da Classe Pai</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-20T19:59:00-02:00" pubdate data-updated="true">Jan 20<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Lendo um pouco sobre herança em Ruby descobri uma coisa interessante, ao usar o método <code>super</code> em algum método, pode ocorrer da erro caso o desenvolvedor não preste atenção. Quando você redefine um método e chama <code>super</code> sem parêntesis e sem argumentos, o Ruby irá pegar os parâmetros passados para o método na subclasse passar de forma implícita para o método da superclasse, se os parâmetros do método na superclasse forem diferentes dos parâmetros no método redefinido irá resultar em erro.
+Exemplo:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Dad</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">hi</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;Hello&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">Class</span> <span class="no">Child</span> <span class="o">&lt;</span> <span class="no">Dad</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">hi</span>
+</span><span class='line'>    <span class="k">super</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;World&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">Child</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">hi</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">=&gt;</span> <span class="ss">ArgumentError</span><span class="p">:</span> <span class="n">wrong</span> <span class="n">number</span> <span class="n">of</span> <span class="n">arguments</span> <span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="mi">0</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Como resolver isso? Simples.
+Caso o método da superclasse não receba parâmetros chame o método super com parêntesis <code>super()</code>
+Exemplo:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Dad</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">hi</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;Hello&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">Class</span> <span class="no">Child</span> <span class="o">&lt;</span> <span class="no">Dad</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">hi</span>
+</span><span class='line'>    <span class="k">super</span><span class="p">()</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;World&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">Child</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">hi</span>
+</span><span class='line'><span class="no">Hello</span>
+</span><span class='line'><span class="no">World</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/09/15/o-que-e-o-splat-operator-do-ruby/">O Que é O Splat Operator Do Ruby?</a></h1>
     
     
       <p class="meta">
@@ -93,9 +203,9 @@ O que esse código faz não vem ao caso, mas olhei o *b e pensei &hellip;">
   </header>
 
 
-  <div class="entry-content"><p>Esses dias olhando um código ruby na internet vi um trecho como esse: <code>def example(*b)</code>
-O que esse código faz não vem ao caso, mas olhei o <code>*b</code> e pensei, oque que é esse * antes da variavel me veio na hora ponteiro, mas ruby não possui ponteiros, então oque <code>*b</code> faz?
-Resumindo é a sintaxe para vArgs em ruby, ex:</p>
+  <div class="entry-content"><p>Esses dias olhando código no GitHub vi um trecho como esse: <code>def example(*b)</code>
+O que esse código faz não vem ao caso, mas olhei o <code>*b</code> e pensei, oque que é esse * antes da variável me veio na hora ponteiro, mas ruby não possui ponteiros, então oque <code>*b</code> faz?
+pesquisei sobre e resumindo é a sintaxe para splat operator em ruby, ex:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -110,8 +220,8 @@ Resumindo é a sintaxe para vArgs em ruby, ex:</p>
 </span><span class='line'><span class="k">end</span>
 </span><span class='line'>
 </span><span class='line'><span class="n">example</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span> <span class="c1"># =&gt; 1 2 3 4</span>
-</span><span class='line'><span class="n">arr</span> <span class="o">=</span> <span class="o">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="o">]</span>
 </span><span class='line'>
+</span><span class='line'><span class="n">arr</span> <span class="o">=</span> <span class="o">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="o">]</span>
 </span><span class='line'><span class="n">example</span> <span class="o">*</span><span class="n">arr</span> <span class="c1"># =&gt; 5 6 7 8</span>
 </span></code></pre></td></tr></table></div></figure>
 
@@ -175,7 +285,11 @@ Resumindo é a sintaxe para vArgs em ruby, ex:</p>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2013/09/15/o-que-faz-o-star-antes-de-um-parametro-em-um-metodo-ruby/">O Que Faz O &#8220;*&#8221; Antes De Um Parâmetro Em Um Método Ruby?</a>
+        <a href="/blog/2014/01/20/cuidado-ao-usar-super-em-seus-metodos/">Cuidado Ao Chamar Métodos Da Classe Pai</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/09/15/o-que-e-o-splat-operator-do-ruby/">O Que é O Splat Operator Do Ruby?</a>
       </li>
     
   </ul>
@@ -220,7 +334,7 @@ Resumindo é a sintaxe para vArgs em ruby, ex:</p>
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Alessandro Dias Batista -
+  Copyright &copy; 2014 - Alessandro Dias Batista -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
