@@ -2,8 +2,8 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://yoursite.com
-title: Alessandro Dias 
+url: http://alessandrodias.herokuapp.com
+title: Alessandro Dias
 subtitle:
 author: Alessandro Dias Batista
 simple_search: http://google.com/search
@@ -90,11 +90,11 @@ delicious_user:
 delicious_count: 3
 
 # Disqus Comments
-disqus_short_name: 
+disqus_short_name:
 disqus_show_comment_count: false
 
 # Google Analytics
 google_analytics_tracking_id:
 
 # Facebook Like
-facebook_like: true 
+facebook_like: true

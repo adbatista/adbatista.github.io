@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Cuidado ao usar super em seus métodos"
+title: "Cuidado ao chamar métodos da classe pai"
 date: 2014-01-20 19:59
 comments: true
 categories: ruby, oop
