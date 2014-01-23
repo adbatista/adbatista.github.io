@@ -31,6 +31,18 @@
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
   
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-47339324-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
 
 </head>
 
@@ -87,12 +99,14 @@
 
 <time datetime="2014-01-20T19:59:00-02:00" pubdate data-updated="true">Jan 20<span>th</span>, 2014</time>
         
+         | <a href="/blog/2014/01/20/cuidado-ao-usar-super-em-seus-metodos/#disqus_thread">Comments</a>
+        
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>Lendo um pouco sobre herança em Ruby descobri uma coisa interessante, ao usar o método <code>super</code> em algum método, pode ocorrer da erro caso o desenvolvedor não preste atenção. Quando você redefine um método e chama <code>super</code> sem parêntesis e sem argumentos, o Ruby irá pegar os parâmetros passados para o método na subclasse passar de forma implícita para o método da superclasse, se os parâmetros do método na superclasse forem diferentes dos parâmetros no método redefinido irá resultar em erro.
+  <div class="entry-content"><p>Lendo um pouco sobre herança em Ruby descobri uma coisa interessante, ao usar o método <code>super</code> em algum método, pode ocorrer da erro caso o desenvolvedor não preste atenção. Quando você redefine um método e chama <code>super</code> sem parênteses e sem argumentos, o Ruby irá pegar os parâmetros passados para o método na subclasse passar de forma implícita para o método da superclasse, se os parâmetros do método na superclasse forem diferentes dos parâmetros no método redefinido irá resultar em erro.
 Exemplo:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -131,7 +145,7 @@ Exemplo:</p>
 
 
 <p>Como resolver isso? Simples.
-Caso o método da superclasse não receba parâmetros chame o método super com parêntesis <code>super()</code>
+Caso o método da superclasse não receba parâmetros chame o método super com parênteses <code>super()</code>
 Exemplo:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -197,6 +211,8 @@ Exemplo:</p>
 
 
 <time datetime="2013-09-15T13:25:00-03:00" pubdate data-updated="true">Sep 15<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/09/15/o-que-e-o-splat-operator-do-ruby/#disqus_thread">Comments</a>
         
       </p>
     
@@ -340,6 +356,19 @@ pesquisei sobre e resumindo é a sintaxe para splat operator em ruby, ex:</p>
 
 </footer>
   
+
+<script type="text/javascript">
+      var disqus_shortname = 'alessandrodias';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
 
 
 
