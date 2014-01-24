@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ruby | Alessandro Dias]]></title>
   <link href="http://alessandrodias.herokuapp.com/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://alessandrodias.herokuapp.com/"/>
-  <updated>2014-01-23T00:53:04-02:00</updated>
+  <updated>2014-01-24T00:46:22-02:00</updated>
   <id>http://alessandrodias.herokuapp.com/</id>
   <author>
     <name><![CDATA[Alessandro Dias Batista]]></name>
@@ -12,6 +12,51 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[construtores em ruby]]></title>
+    <link href="http://alessandrodias.herokuapp.com/blog/2014/01/23/construtores-em-ruby/"/>
+    <updated>2014-01-23T15:53:00-02:00</updated>
+    <id>http://alessandrodias.herokuapp.com/blog/2014/01/23/construtores-em-ruby</id>
+    <content type="html"><![CDATA[<p>Você ja deve ter percebido que diferente do C#, Java e outras linguagens OO, em Ruby a criação de um novo objeto é feita pelo método <code>new</code>, mas como é feita a criação de um objeto em Ruby?
+Primeiro faremos uma lista do que precisamos para para instanciar um novo objeto.</p>
+
+<ol>
+<li>Alocar espaço para um objeto vazio</li>
+<li>Setar o estado inicial do objeto</li>
+<li>Retornar a referência para o objeto alocado</li>
+</ol>
+
+
+<p>Após feita a lista vamos criar um objeto com um construtor personalizado com cada item da lista</p>
+
+<p>```ruby
+class Book
+  def self.custom_new(title, author)</p>
+
+<pre><code>instance = allocate # Aloca espaço para um novo objeto vazio
+instance.custom_initialize(title, author)
+instance # Retorna a referência do objeto
+</code></pre>
+
+<p>  end</p>
+
+<p>  def custom_initialize(title, author)</p>
+
+<pre><code>@title, @author = title, author
+</code></pre>
+
+<p>  end
+end</p>
+
+<p>Book.custom_new(&lsquo;Title&rsquo;,&lsquo;Alessandro&rsquo;)
+ => #&lt;Book:0x00000003607978 @author=&ldquo;ale&rdquo;, @title=&ldquo;Title&rdquo;>
+<code>``
+No caso acima criamos uma classe</code>Book<code>que possui um construtor personalizado, claro que poderíamos sobrescrever o método</code>new<code>e/ou</code>initialize`, mas fiz dessa forma apena para mostrar que é possivel fazer assim.</p>
+
+<p>Caso queira saber sobre o método <code>allocate</code> aqui está a <a href="http://www.ruby-doc.org/core-2.1.0/Class.html#method-i-allocate">documentação</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Cuidado ao chamar métodos da classe pai]]></title>

@@ -9,7 +9,7 @@
   <meta name="author" content="Alessandro Dias Batista">
 
   
-  <meta name="description" content="Lendo um pouco sobre herança em Ruby descobri uma coisa interessante, ao usar o método super em algum método, pode ocorrer da erro caso o &hellip;">
+  <meta name="description" content="Você ja deve ter percebido que diferente do C#, Java e outras linguagens OO, em Ruby a criação de um novo objeto é feita pelo método new, mas como é &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -75,6 +75,89 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/01/23/construtores-em-ruby/">Construtores Em Ruby</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-23T15:53:00-02:00" pubdate data-updated="true">Jan 23<span>rd</span>, 2014</time>
+        
+         | <a href="/blog/2014/01/23/construtores-em-ruby/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Você ja deve ter percebido que diferente do C#, Java e outras linguagens OO, em Ruby a criação de um novo objeto é feita pelo método <code>new</code>, mas como é feita a criação de um objeto em Ruby?
+Primeiro faremos uma lista do que precisamos para para instanciar um novo objeto.</p>
+
+<ol>
+<li>Alocar espaço para um objeto vazio</li>
+<li>Setar o estado inicial do objeto</li>
+<li>Retornar a referência para o objeto alocado</li>
+</ol>
+
+
+<p>Após feita a lista vamos criar um objeto com um construtor personalizado com cada item da lista</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Book</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">custom_new</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">author</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">instance</span> <span class="o">=</span> <span class="n">allocate</span> <span class="c1"># Aloca espaço para um novo objeto vazio</span>
+</span><span class='line'>    <span class="n">instance</span><span class="o">.</span><span class="n">custom_initialize</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">author</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">instance</span> <span class="c1"># Retorna a referência do objeto</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">custom_initialize</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">author</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@title</span><span class="p">,</span> <span class="vi">@author</span> <span class="o">=</span> <span class="n">title</span><span class="p">,</span> <span class="n">author</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">Book</span><span class="o">.</span><span class="n">custom_new</span><span class="p">(</span><span class="s1">&#39;Title&#39;</span><span class="p">,</span><span class="s1">&#39;Alessandro&#39;</span><span class="p">)</span>
+</span><span class='line'> <span class="o">=&gt;</span> <span class="c1">#&lt;Book:0x00000003607978 @author=&quot;ale&quot;, @title=&quot;Title&quot;&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>No caso acima criamos uma classe <code>Book</code> que possui um construtor personalizado, claro que poderíamos sobrescrever o método <code>new</code> e/ou <code>initialize</code>, mas fiz dessa forma apena para mostrar que é possivel fazer assim.</p>
+
+<p>Caso queira saber sobre o método <code>allocate</code> aqui está a <a href="http://www.ruby-doc.org/core-2.1.0/Class.html#method-i-allocate">documentação</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -299,6 +382,10 @@ pesquisei sobre e resumindo é a sintaxe para splat operator em ruby, ex:</p>
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/01/23/construtores-em-ruby/">Construtores Em Ruby</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/01/20/cuidado-ao-usar-super-em-seus-metodos/">Cuidado Ao Chamar Métodos Da Classe Pai</a>

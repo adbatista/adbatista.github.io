@@ -4,7 +4,7 @@
   <title><![CDATA[Alessandro Dias]]></title>
   <link href="http://alessandrodias.herokuapp.com/atom.xml" rel="self"/>
   <link href="http://alessandrodias.herokuapp.com/"/>
-  <updated>2014-01-23T00:53:04-02:00</updated>
+  <updated>2014-01-24T00:46:22-02:00</updated>
   <id>http://alessandrodias.herokuapp.com/</id>
   <author>
     <name><![CDATA[Alessandro Dias Batista]]></name>
@@ -12,6 +12,60 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[construtores em ruby]]></title>
+    <link href="http://alessandrodias.herokuapp.com/blog/2014/01/23/construtores-em-ruby/"/>
+    <updated>2014-01-23T15:53:00-02:00</updated>
+    <id>http://alessandrodias.herokuapp.com/blog/2014/01/23/construtores-em-ruby</id>
+    <content type="html"><![CDATA[<p>Você ja deve ter percebido que diferente do C#, Java e outras linguagens OO, em Ruby a criação de um novo objeto é feita pelo método <code>new</code>, mas como é feita a criação de um objeto em Ruby?
+Primeiro faremos uma lista do que precisamos para para instanciar um novo objeto.</p>
+
+<ol>
+<li>Alocar espaço para um objeto vazio</li>
+<li>Setar o estado inicial do objeto</li>
+<li>Retornar a referência para o objeto alocado</li>
+</ol>
+
+
+<p>Após feita a lista vamos criar um objeto com um construtor personalizado com cada item da lista</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Book</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">custom_new</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">author</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">instance</span> <span class="o">=</span> <span class="n">allocate</span> <span class="c1"># Aloca espaço para um novo objeto vazio</span>
+</span><span class='line'>    <span class="n">instance</span><span class="o">.</span><span class="n">custom_initialize</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">author</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">instance</span> <span class="c1"># Retorna a referência do objeto</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">custom_initialize</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">author</span><span class="p">)</span>
+</span><span class='line'>    <span class="vi">@title</span><span class="p">,</span> <span class="vi">@author</span> <span class="o">=</span> <span class="n">title</span><span class="p">,</span> <span class="n">author</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">Book</span><span class="o">.</span><span class="n">custom_new</span><span class="p">(</span><span class="s1">&#39;Title&#39;</span><span class="p">,</span><span class="s1">&#39;Alessandro&#39;</span><span class="p">)</span>
+</span><span class='line'> <span class="o">=&gt;</span> <span class="c1">#&lt;Book:0x00000003607978 @author=&quot;ale&quot;, @title=&quot;Title&quot;&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>No caso acima criamos uma classe <code>Book</code> que possui um construtor personalizado, claro que poderíamos sobrescrever o método <code>new</code> e/ou <code>initialize</code>, mas fiz dessa forma apena para mostrar que é possivel fazer assim.</p>
+
+<p>Caso queira saber sobre o método <code>allocate</code> aqui está a <a href="http://www.ruby-doc.org/core-2.1.0/Class.html#method-i-allocate">documentação</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Cuidado ao chamar métodos da classe pai]]></title>
