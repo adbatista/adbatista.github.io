@@ -9,7 +9,8 @@
   <meta name="author" content="Alessandro Dias Batista">
 
   
-  <meta name="description" content="Você ja deve ter percebido que diferente do C#, Java e outras linguagens OO, em Ruby a criação de um novo objeto é feita pelo método new, mas como é &hellip;">
+  <meta name="description" content="No último post falei sobre a construção de objetos em Ruby, nesse vamos falar sobre classes.
+Uma caracteristica das classes é que elas também são &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -75,6 +76,73 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/01/24/classes-sao-objetos/">Classes São Objetos</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-24T00:49:00-02:00" pubdate data-updated="true">Jan 24<span>th</span>, 2014</time>
+        
+         | <a href="/blog/2014/01/24/classes-sao-objetos/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>No último post falei sobre a construção de objetos em Ruby, nesse vamos falar sobre classes.<br/>
+Uma caracteristica das classes é que elas também são objetos. Então você pode definir uma classe
+da forma mais comum.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">MyClass</span> <span class="o">&lt;</span> <span class="no">SuperClass</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">my_method</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ou pode criar uma instância da classe <code>[Class](http://www.ruby-doc.org/core-2.1.0/Class.html)</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">MyClass</span> <span class="o">=</span> <span class="no">Class</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">SuperClass</span><span class="p">)</span> <span class="k">do</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">my_method</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>As duas abordagens são válidas, a primeira é apenas um <em>syntax sugar</em>.<br/>
+Outra coisa interessante sobre classes é que <a href="http://nomedojogo.com/2009/12/24/classes-sao-modulos-no-ruby/">elas também são módulos</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -382,6 +450,10 @@ pesquisei sobre e resumindo é a sintaxe para splat operator em ruby, ex:</p>
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/01/24/classes-sao-objetos/">Classes São Objetos</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/01/23/construtores-em-ruby/">Construtores Em Ruby</a>

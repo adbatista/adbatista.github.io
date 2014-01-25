@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ruby | Alessandro Dias]]></title>
   <link href="http://alessandrodias.herokuapp.com/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://alessandrodias.herokuapp.com/"/>
-  <updated>2014-01-24T00:46:22-02:00</updated>
+  <updated>2014-01-24T23:15:34-02:00</updated>
   <id>http://alessandrodias.herokuapp.com/</id>
   <author>
     <name><![CDATA[Alessandro Dias Batista]]></name>
@@ -12,6 +12,34 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[classes são objetos]]></title>
+    <link href="http://alessandrodias.herokuapp.com/blog/2014/01/24/classes-sao-objetos/"/>
+    <updated>2014-01-24T00:49:00-02:00</updated>
+    <id>http://alessandrodias.herokuapp.com/blog/2014/01/24/classes-sao-objetos</id>
+    <content type="html"><![CDATA[<p>No último post falei sobre a construção de objetos em Ruby, nesse vamos falar sobre classes.<br/>
+Uma caracteristica das classes é que elas também são objetos. Então você pode definir uma classe
+da forma mais comum.</p>
+
+<p><code>ruby
+class MyClass &lt; SuperClass
+  def my_method
+  end
+end
+</code>
+ou pode criar uma instância da classe <code>[Class](http://www.ruby-doc.org/core-2.1.0/Class.html)</code></p>
+
+<p><code>ruby
+MyClass = Class.new(SuperClass) do
+  def my_method
+  end
+end
+</code>
+As duas abordagens são válidas, a primeira é apenas um <em>syntax sugar</em>.<br/>
+Outra coisa interessante sobre classes é que <a href="http://nomedojogo.com/2009/12/24/classes-sao-modulos-no-ruby/">elas também são módulos</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[construtores em ruby]]></title>
