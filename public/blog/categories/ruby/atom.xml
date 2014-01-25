@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ruby | Alessandro Dias]]></title>
   <link href="http://alessandrodias.herokuapp.com/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://alessandrodias.herokuapp.com/"/>
-  <updated>2014-01-24T23:15:34-02:00</updated>
+  <updated>2014-01-24T23:41:24-02:00</updated>
   <id>http://alessandrodias.herokuapp.com/</id>
   <author>
     <name><![CDATA[Alessandro Dias Batista]]></name>
@@ -37,7 +37,7 @@ MyClass = Class.new(SuperClass) do
 end
 </code>
 As duas abordagens são válidas, a primeira é apenas um <em>syntax sugar</em>.<br/>
-Outra coisa interessante sobre classes é que <a href="http://nomedojogo.com/2009/12/24/classes-sao-modulos-no-ruby/">elas também são módulos</a></p>
+Outra coisa interessante sobre classes é que <a href="http://nomedojogo.com/2009/12/24/classes-sao-modulos-no-ruby/" title="Classes são módulos no Ruby" target="_blank">elas também são módulos</a></p>
 ]]></content>
   </entry>
   

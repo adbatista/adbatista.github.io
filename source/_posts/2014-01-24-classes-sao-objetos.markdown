@@ -24,4 +24,4 @@ MyClass = Class.new(SuperClass) do
 end
 ```
 As duas abordagens são válidas, a primeira é apenas um _syntax sugar_.  
-Outra coisa interessante sobre classes é que [elas também são módulos](http://nomedojogo.com/2009/12/24/classes-sao-modulos-no-ruby/)
+Outra coisa interessante sobre classes é que <a href="http://nomedojogo.com/2009/12/24/classes-sao-modulos-no-ruby/" title="Classes são módulos no Ruby" target="_blank">elas também são módulos</a>
