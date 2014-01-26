@@ -9,8 +9,7 @@
   <meta name="author" content="Alessandro Dias Batista">
 
   
-  <meta name="description" content="No último post falei sobre a construção de objetos em Ruby, nesse vamos falar sobre classes.
-Uma caracteristica das classes é que elas também são &hellip;">
+  <meta name="description" content="Para que serve o &amp; antes de um parâmetro em Ruby? O &amp; antes de algum parâmetro é utilizado basicamente de duas formas: Na definição de um &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +75,137 @@ Uma caracteristica das classes é que elas também são &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/01/25/parametro-and-ampersand/">O Parâmetro &amp; (Ampersand)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-25T17:10:00-02:00" pubdate data-updated="true">Jan 25<span>th</span>, 2014</time>
+        
+         | <a href="/blog/2014/01/25/parametro-and-ampersand/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Para que serve o &amp; antes de um parâmetro em Ruby?</p>
+
+<p>O &amp; antes de algum parâmetro é utilizado basicamente de duas formas:</p>
+
+<ol>
+<li>Na definição de um método:
+<code>ruby
+def awesome_method &amp;block
+yield if block_given?
+end
+</code></li>
+<li>Antes da chamada de um método:
+<code>ruby
+awesome_method &amp;parameter
+</code></li>
+</ol>
+
+
+<p>A primeira forma serve para deixar explícito que o seu método recebe um bloco.<br/>
+Já a segunda forma funciona assim:<br/>
+pega o parâmetro, chama o método <code>to_proc</code> e o passa como bloco, idependente de o método ter deixado o bloco explícito ou não. Então basta que o objeto passado responda a <code>to_proc</code>. Você ja deve ter visto parecido com isso:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="vi">@users</span><span class="o">.</span><span class="n">map</span> <span class="o">&amp;</span><span class="ss">:name</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>E uma coisa que sempre quis saber é &ldquo;como um símbolo passado como parâmetro irá no exemplo acima irá retornar o nome de todos usuários?&rdquo;.<br/>
+Pesquisei um pouco, <a href="http://stackoverflow.com/questions/1217088/what-does-mapname-mean-in-ruby#answer-1217114" target="_blank">e achei como isso é feito</a>
+Símbolos implementam o <code>to_proc</code>, tá e dai, como funciona esse to_proc`?</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="k">class</span> <span class="nc">Symbol</span>
+</span><span class='line'>    <span class="c1"># ...</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">to_proc</span>
+</span><span class='line'>      <span class="no">Proc</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">obj</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="o">|</span>
+</span><span class='line'>        <span class="n">obj</span><span class="o">.</span><span class="n">send</span> <span class="nb">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>    <span class="c1"># ...</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Ainda um pouco confuso? Vamos destrinchar esse código então.
+vamos chamar o <code>to_proc</code> para o símbolo <code>:name</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="c1">#...</span>
+</span><span class='line'>  <span class="no">Proc</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">obj</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="o">|</span>
+</span><span class='line'>    <span class="n">obj</span><span class="o">.</span><span class="n">send</span> <span class="ss">:name</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="c1">#...</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>o <code>map</code> passa como parâmetro para o bloco um item da coleção, nesse caso um user, vamos adicioná-lo no código, e já que apenas um argumento é passado podemos remover o <code>*args</code> para simplificar.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="c1">#...</span>
+</span><span class='line'>  <span class="no">Proc</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">user</span><span class="o">|</span>
+</span><span class='line'>    <span class="n">user</span><span class="o">.</span><span class="n">send</span> <span class="ss">:name</span> <span class="c1"># =&gt; equivalente a user.name</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>  <span class="c1">#...</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Mais simples agora? O método <code>send</code> envia para o user a mensagem <code>:name</code>, porque na verdade em Ruby metódos não são chamados, são mensagens enviadas ao objeto.
+o resultado final seria algo equivalente a isso:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="vi">@users</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">user</span><span class="o">|</span>
+</span><span class='line'>    <span class="n">user</span><span class="o">.</span><span class="n">send</span> <span class="ss">:name</span> <span class="c1"># ou user.name</span>
+</span><span class='line'>  <span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Caso queira saber mais sobre o ampersand: <a href="http://www.skorks.com/2013/04/ruby-ampersand-parameter-demystified/">Ruby ampersand parameter demystified</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -450,6 +580,10 @@ pesquisei sobre e resumindo é a sintaxe para splat operator em ruby, ex:</p>
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/01/25/parametro-and-ampersand/">O Parâmetro &amp; (Ampersand)</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/01/24/classes-sao-objetos/">Classes São Objetos</a>
