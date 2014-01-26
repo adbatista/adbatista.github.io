@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ampersand | Alessandro Dias]]></title>
   <link href="http://alessandrodias.herokuapp.com/blog/categories/ampersand/atom.xml" rel="self"/>
   <link href="http://alessandrodias.herokuapp.com/"/>
-  <updated>2014-01-26T04:39:09-02:00</updated>
+  <updated>2014-01-26T04:42:48-02:00</updated>
   <id>http://alessandrodias.herokuapp.com/</id>
   <author>
     <name><![CDATA[Alessandro Dias Batista]]></name>
@@ -22,19 +22,18 @@
 
 <p>O &amp; antes de algum parâmetro é utilizado basicamente de duas formas:</p>
 
-<ol>
-<li>Na definição de um método:
-<code>ruby
-def awesome_method &amp;block
-yield if block_given?
-end
-</code></li>
-<li>Antes da chamada de um método:
-<code>ruby
-awesome_method &amp;parameter
-</code></li>
-</ol>
+<p>1 Na definição de um método:</p>
 
+<p><code>ruby
+def awesome_method &amp;block
+  yield if block_given?
+end
+</code></p>
+
+<p>2 Antes da chamada de um método:
+<code>ruby
+  awesome_method &amp;parameter
+</code></p>
 
 <p>A primeira forma serve para deixar explícito que o seu método recebe um bloco.<br/>
 Já a segunda forma funciona assim:<br/>

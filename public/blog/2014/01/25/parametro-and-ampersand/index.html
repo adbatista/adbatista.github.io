@@ -9,7 +9,7 @@
   <meta name="author" content="Alessandro Dias Batista">
 
   
-  <meta name="description" content="Para que serve o &amp; antes de um parâmetro em Ruby? O &amp; antes de algum parâmetro é utilizado basicamente de duas formas: Na definição de um &hellip;">
+  <meta name="description" content="Para que serve o &amp; antes de um parâmetro em Ruby? O &amp; antes de algum parâmetro é utilizado basicamente de duas formas: 1 Na definição de um &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -107,18 +107,22 @@
 
 <p>O &amp; antes de algum parâmetro é utilizado basicamente de duas formas:</p>
 
-<ol>
-<li>Na definição de um método:
-<code>ruby
-def awesome_method &amp;block
-yield if block_given?
-end
-</code></li>
-<li>Antes da chamada de um método:
-<code>ruby
-awesome_method &amp;parameter
-</code></li>
-</ol>
+<p>1 Na definição de um método:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">awesome_method</span> <span class="o">&amp;</span><span class="n">block</span>
+</span><span class='line'>  <span class="k">yield</span> <span class="k">if</span> <span class="nb">block_given?</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>2 Antes da chamada de um método:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'>  <span class="n">awesome_method</span> <span class="o">&amp;</span><span class="n">parameter</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>A primeira forma serve para deixar explícito que o seu método recebe um bloco.<br/>

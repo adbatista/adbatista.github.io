@@ -9,16 +9,18 @@ Para que serve o &amp; antes de um parâmetro em Ruby?
 
 O &amp; antes de algum parâmetro é utilizado basicamente de duas formas:
 
-1.  Na definição de um método:
-  ```ruby
-  def awesome_method &block
-    yield if block_given?
-  end
-  ```
-2.  Antes da chamada de um método:
-  ```ruby
+1 Na definição de um método:
+
+```ruby
+def awesome_method &block
+  yield if block_given?
+end
+```
+
+2 Antes da chamada de um método:
+```ruby
   awesome_method &parameter
-  ```
+```
 
 A primeira forma serve para deixar explícito que o seu método recebe um bloco.  
 Já a segunda forma funciona assim:  
