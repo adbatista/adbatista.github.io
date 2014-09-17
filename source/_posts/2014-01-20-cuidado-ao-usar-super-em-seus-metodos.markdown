@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Cuidado ao chamar métodos da classe pai"
+title: "Cuidado ao chamar métodos da super classe"
 date: 2014-01-20 19:59
 comments: true
 categories: [ruby, oop]
@@ -11,18 +11,18 @@ Exemplo:
 ```ruby
 class Dad
   def hi
-    puts "Hello"
+    puts "Hello "
   end
 end
 
 Class Child < Dad
-  def hi
+  def hi(name)
     super
-    puts "World"
+    puts name
   end
 end
 
-Child.new.hi
+Child.new('alessandro').hi
 
 => ArgumentError: wrong number of arguments (1 for 0)
 ```
@@ -34,18 +34,18 @@ Exemplo:
 ```ruby
 class Dad
   def hi
-    puts "Hello"
+    puts "Hello "
   end
 end
 
 Class Child < Dad
-  def hi
+  def hi(name)
     super()
-    puts "World"
+    puts name
   end
 end
 
-Child.new.hi
-Hello
-World
+Child.new('alessandro').hi
+=> Hello 
+=> alessandro
 ```

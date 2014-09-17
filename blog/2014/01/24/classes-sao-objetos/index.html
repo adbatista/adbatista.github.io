@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>como o ruby procura o método chamado? - Alessandro Dias</title>
+  <title>classes são objetos - Alessandro Dias</title>
   <meta name="author" content="Alessandro Dias Batista">
 
   
-  <meta name="description" content="Ja ficou curioso sobre como o ruby faz para encontrar um método chamado? Se ele busca na superclasse ou se procura no módulos primeiro e em que ordem &hellip;">
+  <meta name="description" content="No último post falei sobre a construção de objetos em Ruby, nesse vamos falar sobre classes.
+Uma caracteristica das classes é que elas também são &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://alessandrodias.herokuapp.com/blog/2014/01/26/como-o-ruby-procura-o-metodo-chamado">
+  <link rel="canonical" href="http://adbatista.github.io/blog/2014/01/24/classes-sao-objetos">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Alessandro Dias" type="application/atom+xml">
@@ -60,7 +61,7 @@
   
 <form action="http://google.com/search" method="get">
   <fieldset role="search">
-    <input type="hidden" name="q" value="site:alessandrodias.herokuapp.com" />
+    <input type="hidden" name="q" value="site:adbatista.github.io" />
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
   </fieldset>
 </form>
@@ -78,7 +79,7 @@
   
   <header>
     
-      <h1 class="entry-title">Como O Ruby Procura O Método Chamado?</h1>
+      <h1 class="entry-title">Classes São Objetos</h1>
     
     
       <p class="meta">
@@ -94,7 +95,7 @@
   
 
 
-<time datetime="2014-01-26T16:56:00-02:00" pubdate data-updated="true">Jan 26<span>th</span>, 2014</time>
+<time datetime="2014-01-24T00:49:00-02:00" pubdate data-updated="true">Jan 24<span>th</span>, 2014</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -103,8 +104,36 @@
   </header>
 
 
-<div class="entry-content"><p>Ja ficou curioso sobre como o ruby faz para encontrar um método chamado? Se ele busca na superclasse ou se procura no módulos primeiro e em que ordem ele busca nos módulos?<br/>
-Pois então, quando você envia uma mensagem para um objeto (chama um método), o Ruby procura esse método no objeto, caso não encontre ele irá verificar na <a href="http://simplesideias.com.br/ruby-object-model-singleton-class" target="_blank">singleton class</a>, depoi nos módulos incluidos começando pelo último incluido até o primeiro, e caso não encontre, irá para a superclasse e fazer a mesma coisa (classe, modulos,superclasse), até chegar na classe BasicObject, que é a classe no topo da hieraquia, e se método não for encontrado, o Ruby chama o método <code>method_missing</code> que lança um exceção <code>NoMethodError</code>.</p>
+<div class="entry-content"><p>No último post falei sobre a construção de objetos em Ruby, nesse vamos falar sobre classes.<br/>
+Uma caracteristica das classes é que elas também são objetos. Então você pode definir uma classe
+da forma mais comum.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">MyClass</span> <span class="o">&lt;</span> <span class="no">SuperClass</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">my_method</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ou pode criar uma instância da classe <code>[Class](http://www.ruby-doc.org/core-2.1.0/Class.html)</code></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">MyClass</span> <span class="o">=</span> <span class="no">Class</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">SuperClass</span><span class="p">)</span> <span class="k">do</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">my_method</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>As duas abordagens são válidas, a primeira é apenas um <em>syntax sugar</em>.<br/>
+Outra coisa interessante sobre classes é que <a href="http://nomedojogo.com/2009/12/24/classes-sao-modulos-no-ruby/" title="Classes são módulos no Ruby" target="_blank">elas também são módulos</a></p>
 </div>
 
 
@@ -127,15 +156,21 @@ Pois então, quando você envia uma mensagem para um objeto (chama um método), 
   
 
 
-<time datetime="2014-01-26T16:56:00-02:00" pubdate data-updated="true">Jan 26<span>th</span>, 2014</time>
+<time datetime="2014-01-24T00:49:00-02:00" pubdate data-updated="true">Jan 24<span>th</span>, 2014</time>
       
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ruby/'>ruby</a>
+  
+</span>
 
 
     </p>
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://alessandrodias.herokuapp.com/blog/2014/01/26/como-o-ruby-procura-o-metodo-chamado/" data-via="" data-counturl="http://alessandrodias.herokuapp.com/blog/2014/01/26/como-o-ruby-procura-o-metodo-chamado/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://adbatista.github.io/blog/2014/01/24/classes-sao-objetos/" data-via="" data-counturl="http://adbatista.github.io/blog/2014/01/24/classes-sao-objetos/" >Tweet</a>
   
   
   
@@ -146,8 +181,10 @@ Pois então, quando você envia uma mensagem para um objeto (chama um método), 
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/01/25/parametro-and-ampersand/" title="Previous Post: o parâmetro &amp; (Ampersand)">&laquo; o parâmetro &amp; (Ampersand)</a>
+        <a class="basic-alignment left" href="/blog/2014/01/23/construtores-em-ruby/" title="Previous Post: construtores em ruby">&laquo; construtores em ruby</a>
       
+      
+        <a class="basic-alignment right" href="/blog/2014/01/25/parametro-and-ampersand/" title="Next Post: o parâmetro &amp; (Ampersand)">o parâmetro &amp; (Ampersand) &raquo;</a>
       
     </p>
   </footer>
@@ -168,10 +205,6 @@ Pois então, quando você envia uma mensagem para um objeto (chama um método), 
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2014/01/26/como-o-ruby-procura-o-metodo-chamado/">Como O Ruby Procura O Método Chamado?</a>
-      </li>
-    
-      <li class="post">
         <a href="/blog/2014/01/25/parametro-and-ampersand/">O Parâmetro &amp; (Ampersand)</a>
       </li>
     
@@ -185,6 +218,10 @@ Pois então, quando você envia uma mensagem para um objeto (chama um método), 
     
       <li class="post">
         <a href="/blog/2014/01/20/cuidado-ao-usar-super-em-seus-metodos/">Cuidado Ao Chamar Métodos Da Classe Pai</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/09/15/o-que-e-o-splat-operator-do-ruby/">O Que é O Splat Operator Do Ruby?</a>
       </li>
     
   </ul>
@@ -242,8 +279,8 @@ Pois então, quando você envia uma mensagem para um objeto (chama um método), 
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://alessandrodias.herokuapp.com/blog/2014/01/26/como-o-ruby-procura-o-metodo-chamado/';
-        var disqus_url = 'http://alessandrodias.herokuapp.com/blog/2014/01/26/como-o-ruby-procura-o-metodo-chamado/';
+        var disqus_identifier = 'http://adbatista.github.io/blog/2014/01/24/classes-sao-objetos/';
+        var disqus_url = 'http://adbatista.github.io/blog/2014/01/24/classes-sao-objetos/';
         var disqus_script = 'embed.js';
       
     (function () {

@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://adbatista.github.io/sitemap.xml 

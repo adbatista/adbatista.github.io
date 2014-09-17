@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: ruby | Alessandro Dias]]></title>
+  <link href="http://adbatista.github.io/blog/categories/ruby/atom.xml" rel="self"/>
+  <link href="http://adbatista.github.io/"/>
+  <updated>2014-09-15T23:08:49-03:00</updated>
+  <id>http://adbatista.github.io/</id>
+  <author>
+    <name><![CDATA[Alessandro Dias Batista]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[o parâmetro &amp; (Ampersand)]]></title>
+    <link href="http://adbatista.github.io/blog/2014/01/25/parametro-and-ampersand/"/>
+    <updated>2014-01-25T17:10:00-02:00</updated>
+    <id>http://adbatista.github.io/blog/2014/01/25/parametro-and-ampersand</id>
+    <content type="html"><![CDATA[<p>Para que serve o &amp; antes de um parâmetro em Ruby?</p>
+
+<p>O &amp; antes de algum parâmetro é utilizado basicamente de duas formas:</p>
+
+<p>1 Na definição de um método:</p>
+
+<p><code>ruby
+def awesome_method &amp;block
+  yield if block_given?
+end
+</code></p>
+
+<p>2 Antes da chamada de um método:
+<code>ruby
+  awesome_method &amp;parameter
+</code></p>
+
+<p>A primeira forma serve para deixar explícito que o seu método recebe um bloco.<br/>
+Já a segunda forma funciona assim:<br/>
+pega o parâmetro, chama o método <code>to_proc</code> e o passa como bloco, idependente de o método ter deixado o bloco explícito ou não. Então basta que o objeto passado responda a <code>to_proc</code>. Você ja deve ter visto parecido com isso:</p>
+
+<p><code>ruby
+  @users.map &amp;:name
+</code>
+E uma coisa que sempre quis saber é &ldquo;como um símbolo passado como parâmetro irá no exemplo acima irá retornar o nome de todos usuários?&rdquo;.<br/>
+Pesquisei um pouco, <a href="http://stackoverflow.com/questions/1217088/what-does-mapname-mean-in-ruby#answer-1217114" target="_blank">e achei como isso é feito</a>
+Símbolos implementam o <code>to_proc</code>, tá e dai, como funciona esse to_proc`?</p>
+
+<p>```ruby
+  class Symbol</p>
+
+<pre><code># ...
+def to_proc
+  Proc.new do |obj, *args|
+    obj.send self, *args
+  end
+end
+# ...
+</code></pre>
+
+<p><code>
+Ainda um pouco confuso? Vamos destrinchar esse código então.
+vamos chamar o `to_proc` para o símbolo `:name`
+</code>ruby
+  #&hellip;
+  Proc.new do |obj, *args|</p>
+
+<pre><code>obj.send :name, *args
+</code></pre>
+
+<p>  end
+  #&hellip;
+<code>``
+o</code>map<code>passa como parâmetro para o bloco um item da coleção, nesse caso um user, vamos adicioná-lo no código, e já que apenas um argumento é passado podemos remover o</code>*args` para simplificar.</p>
+
+<p>```ruby
+  #&hellip;
+  Proc.new do |user|</p>
+
+<pre><code>user.send :name # =&gt; equivalente a user.name
+</code></pre>
+
+<p>  end
+  #&hellip;
+<code>
+Mais simples agora? O método `send` envia para o user a mensagem `:name`, porque na verdade em Ruby metódos não são chamados, são mensagens enviadas ao objeto.
+o resultado final seria algo equivalente a isso:
+</code>ruby
+  @users.map do |user|</p>
+
+<pre><code>user.send :name # ou user.name
+</code></pre>
+
+<p>  end
+```</p>
+
+<p>Caso queira saber mais sobre o ampersand: <a href="http://www.skorks.com/2013/04/ruby-ampersand-parameter-demystified/">Ruby ampersand parameter demystified</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[classes são objetos]]></title>
+    <link href="http://adbatista.github.io/blog/2014/01/24/classes-sao-objetos/"/>
+    <updated>2014-01-24T00:49:00-02:00</updated>
+    <id>http://adbatista.github.io/blog/2014/01/24/classes-sao-objetos</id>
+    <content type="html"><![CDATA[<p>No último post falei sobre a construção de objetos em Ruby, nesse vamos falar sobre classes.<br/>
+Uma caracteristica das classes é que elas também são objetos. Então você pode definir uma classe
+da forma mais comum.</p>
+
+<p><code>ruby
+class MyClass &lt; SuperClass
+  def my_method
+  end
+end
+</code>
+ou pode criar uma instância da classe <code>[Class](http://www.ruby-doc.org/core-2.1.0/Class.html)</code></p>
+
+<p><code>ruby
+MyClass = Class.new(SuperClass) do
+  def my_method
+  end
+end
+</code>
+As duas abordagens são válidas, a primeira é apenas um <em>syntax sugar</em>.<br/>
+Outra coisa interessante sobre classes é que <a href="http://nomedojogo.com/2009/12/24/classes-sao-modulos-no-ruby/" title="Classes são módulos no Ruby" target="_blank">elas também são módulos</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[construtores em ruby]]></title>
+    <link href="http://adbatista.github.io/blog/2014/01/23/construtores-em-ruby/"/>
+    <updated>2014-01-23T15:53:00-02:00</updated>
+    <id>http://adbatista.github.io/blog/2014/01/23/construtores-em-ruby</id>
+    <content type="html"><![CDATA[<p>Você ja deve ter percebido que diferente do C#, Java e outras linguagens OO, em Ruby a criação de um novo objeto é feita pelo método <code>new</code>, mas como é feita a criação de um objeto em Ruby?
+Primeiro faremos uma lista do que precisamos para para instanciar um novo objeto.</p>
+
+<ol>
+<li>Alocar espaço para um objeto vazio</li>
+<li>Setar o estado inicial do objeto</li>
+<li>Retornar a referência para o objeto alocado</li>
+</ol>
+
+
+<p>Após feita a lista vamos criar um objeto com um construtor personalizado com cada item da lista</p>
+
+<p>```ruby
+class Book
+  def self.custom_new(title, author)</p>
+
+<pre><code>instance = allocate # Aloca espaço para um novo objeto vazio
+instance.custom_initialize(title, author)
+instance # Retorna a referência do objeto
+</code></pre>
+
+<p>  end</p>
+
+<p>  def custom_initialize(title, author)</p>
+
+<pre><code>@title, @author = title, author
+</code></pre>
+
+<p>  end
+end</p>
+
+<p>Book.custom_new(&lsquo;Title&rsquo;,&lsquo;Alessandro&rsquo;)
+ => #&lt;Book:0x00000003607978 @author=&ldquo;ale&rdquo;, @title=&ldquo;Title&rdquo;>
+<code>``
+No caso acima criamos uma classe</code>Book<code>que possui um construtor personalizado, claro que poderíamos sobrescrever o método</code>new<code>e/ou</code>initialize`, mas fiz dessa forma apena para mostrar que é possivel fazer assim.</p>
+
+<p>Caso queira saber sobre o método <code>allocate</code> aqui está a <a href="http://www.ruby-doc.org/core-2.1.0/Class.html#method-i-allocate">documentação</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Cuidado ao chamar métodos da classe pai]]></title>
+    <link href="http://adbatista.github.io/blog/2014/01/20/cuidado-ao-usar-super-em-seus-metodos/"/>
+    <updated>2014-01-20T19:59:00-02:00</updated>
+    <id>http://adbatista.github.io/blog/2014/01/20/cuidado-ao-usar-super-em-seus-metodos</id>
+    <content type="html"><![CDATA[<p>Lendo um pouco sobre herança em Ruby descobri uma coisa interessante, ao usar o método <code>super</code> em algum método, pode ocorrer da erro caso o desenvolvedor não preste atenção. Quando você redefine um método e chama <code>super</code> sem parênteses e sem argumentos, o Ruby irá pegar os parâmetros passados para o método na subclasse passar de forma implícita para o método da superclasse, se os parâmetros do método na superclasse forem diferentes dos parâmetros no método redefinido irá resultar em erro.
+Exemplo:</p>
+
+<p>```ruby
+class Dad
+  def hi</p>
+
+<pre><code>puts "Hello"
+</code></pre>
+
+<p>  end
+end</p>
+
+<p>Class Child &lt; Dad
+  def hi</p>
+
+<pre><code>super
+puts "World"
+</code></pre>
+
+<p>  end
+end</p>
+
+<p>Child.new.hi</p>
+
+<p>=> ArgumentError: wrong number of arguments (1 for 0)
+```</p>
+
+<p>Como resolver isso? Simples.
+Caso o método da superclasse não receba parâmetros chame o método super com parênteses <code>super()</code>
+Exemplo:</p>
+
+<p>```ruby
+class Dad
+  def hi</p>
+
+<pre><code>puts "Hello"
+</code></pre>
+
+<p>  end
+end</p>
+
+<p>Class Child &lt; Dad
+  def hi</p>
+
+<pre><code>super()
+puts "World"
+</code></pre>
+
+<p>  end
+end</p>
+
+<p>Child.new.hi
+Hello
+World
+```</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[O que é o splat operator do ruby?]]></title>
+    <link href="http://adbatista.github.io/blog/2013/09/15/o-que-e-o-splat-operator-do-ruby/"/>
+    <updated>2013-09-15T13:25:00-03:00</updated>
+    <id>http://adbatista.github.io/blog/2013/09/15/o-que-e-o-splat-operator-do-ruby</id>
+    <content type="html"><![CDATA[<p>Esses dias olhando código no GitHub vi um trecho como esse: <code>def example(*b)</code>
+O que esse código faz não vem ao caso, mas olhei o <code>*b</code> e pensei, oque que é esse * antes da variável me veio na hora ponteiro, mas ruby não possui ponteiros, então oque <code>*b</code> faz?
+pesquisei sobre e resumindo é a sintaxe para splat operator em ruby, ex:</p>
+
+<p>```ruby</p>
+
+<pre><code>def example(*b)
+  puts b
+end
+
+example 1,2,3,4 # =&gt; 1 2 3 4
+
+arr = [5,6,7,8]
+example *arr # =&gt; 5 6 7 8
+</code></pre>
+
+<p>```</p>
+
+<p>na ultima linha o <code>*arr</code> faz com que cada item do array seja passado como parâmetro para o método <code>example</code>, você pode usar dessa forma também.</p>
+
+<p>```ruby</p>
+
+<pre><code>def example2(v1,v2,3)
+  puts v1,v2,v3
+end
+
+arr = [2, 3, 1]
+example2 *arr # =&gt; 2 3 1
+</code></pre>
+
+<p>```
+Nessa segunda abordagem você de ter cuidado para que a quantidade de elementos no array seja igual a quantidade de parâmetros requeridos pelo método.</p>
+
+<p>Outra forma válida é o próximo exemplo:</p>
+
+<p>```ruby</p>
+
+<pre><code>def example3(v1,*v2)
+  puts v2
+end
+
+arr = [2, 3, 1]
+
+example3 *arr #=&gt; 3 1
+</code></pre>
+
+<p>```</p>
+
+<p>Nesse caso o primeiro valor da variavel <code>arr</code> é atribuido ao primeiro parâmetro e os demais ao parâmetro v2.</p>
+]]></content>
+  </entry>
+  
+</feed>

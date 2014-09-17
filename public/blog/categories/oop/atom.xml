@@ -4,7 +4,7 @@
   <title><![CDATA[Category: oop | Alessandro Dias]]></title>
   <link href="http://alessandrodias.herokuapp.com/blog/categories/oop/atom.xml" rel="self"/>
   <link href="http://alessandrodias.herokuapp.com/"/>
-  <updated>2014-04-03T15:33:16-03:00</updated>
+  <updated>2014-09-17T11:23:09-03:00</updated>
   <id>http://alessandrodias.herokuapp.com/</id>
   <author>
     <name><![CDATA[Alessandro Dias Batista]]></name>
@@ -59,7 +59,7 @@ No caso acima criamos uma classe</code>Book<code>que possui um construtor person
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Cuidado ao chamar métodos da classe pai]]></title>
+    <title type="html"><![CDATA[Cuidado ao chamar métodos da super classe]]></title>
     <link href="http://alessandrodias.herokuapp.com/blog/2014/01/20/cuidado-ao-usar-super-em-seus-metodos/"/>
     <updated>2014-01-20T19:59:00-02:00</updated>
     <id>http://alessandrodias.herokuapp.com/blog/2014/01/20/cuidado-ao-usar-super-em-seus-metodos</id>
@@ -70,23 +70,23 @@ Exemplo:</p>
 class Dad
   def hi</p>
 
-<pre><code>puts "Hello"
+<pre><code>puts "Hello "
 </code></pre>
 
 <p>  end
 end</p>
 
 <p>Class Child &lt; Dad
-  def hi</p>
+  def hi(name)</p>
 
 <pre><code>super
-puts "World"
+puts name
 </code></pre>
 
 <p>  end
 end</p>
 
-<p>Child.new.hi</p>
+<p>Child.new(&lsquo;alessandro&rsquo;).hi</p>
 
 <p>=> ArgumentError: wrong number of arguments (1 for 0)
 ```</p>
@@ -99,25 +99,25 @@ Exemplo:</p>
 class Dad
   def hi</p>
 
-<pre><code>puts "Hello"
+<pre><code>puts "Hello "
 </code></pre>
 
 <p>  end
 end</p>
 
 <p>Class Child &lt; Dad
-  def hi</p>
+  def hi(name)</p>
 
 <pre><code>super()
-puts "World"
+puts name
 </code></pre>
 
 <p>  end
 end</p>
 
-<p>Child.new.hi
-Hello
-World
+<p>Child.new(&lsquo;alessandro&rsquo;).hi
+=> Hello
+=> alessandro
 ```</p>
 ]]></content>
   </entry>

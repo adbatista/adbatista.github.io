@@ -4,7 +4,7 @@
   <title><![CDATA[Alessandro Dias]]></title>
   <link href="http://alessandrodias.herokuapp.com/atom.xml" rel="self"/>
   <link href="http://alessandrodias.herokuapp.com/"/>
-  <updated>2014-04-03T15:33:16-03:00</updated>
+  <updated>2014-09-17T11:23:09-03:00</updated>
   <id>http://alessandrodias.herokuapp.com/</id>
   <author>
     <name><![CDATA[Alessandro Dias Batista]]></name>
@@ -12,16 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[como o ruby procura o método chamado?]]></title>
-    <link href="http://alessandrodias.herokuapp.com/blog/2014/01/26/como-o-ruby-procura-o-metodo-chamado/"/>
-    <updated>2014-01-26T16:56:00-02:00</updated>
-    <id>http://alessandrodias.herokuapp.com/blog/2014/01/26/como-o-ruby-procura-o-metodo-chamado</id>
-    <content type="html"><![CDATA[<p>Ja ficou curioso sobre como o ruby faz para encontrar um método chamado? Se ele busca na superclasse ou se procura no módulos primeiro e em que ordem ele busca nos módulos?<br/>
-Pois então, quando você envia uma mensagem para um objeto (chama um método), o Ruby procura esse método no objeto, caso não encontre ele irá verificar na <a href="http://simplesideias.com.br/ruby-object-model-singleton-class" target="_blank">singleton class</a>, depoi nos módulos incluidos começando pelo último incluido até o primeiro, e caso não encontre, irá para a superclasse e fazer a mesma coisa (classe, modulos,superclasse), até chegar na classe BasicObject, que é a classe no topo da hieraquia, e se método não for encontrado, o Ruby chama o método <code>method_missing</code> que lança um exceção <code>NoMethodError</code>.</p>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[o parâmetro &amp; (Ampersand)]]></title>
@@ -222,7 +212,7 @@ Primeiro faremos uma lista do que precisamos para para instanciar um novo objeto
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Cuidado ao chamar métodos da classe pai]]></title>
+    <title type="html"><![CDATA[Cuidado ao chamar métodos da super classe]]></title>
     <link href="http://alessandrodias.herokuapp.com/blog/2014/01/20/cuidado-ao-usar-super-em-seus-metodos/"/>
     <updated>2014-01-20T19:59:00-02:00</updated>
     <id>http://alessandrodias.herokuapp.com/blog/2014/01/20/cuidado-ao-usar-super-em-seus-metodos</id>
@@ -247,18 +237,18 @@ Exemplo:</p>
 <span class='line-number'>16</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Dad</span>
 </span><span class='line'>  <span class="k">def</span> <span class="nf">hi</span>
-</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;Hello&quot;</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;Hello &quot;</span>
 </span><span class='line'>  <span class="k">end</span>
 </span><span class='line'><span class="k">end</span>
 </span><span class='line'>
 </span><span class='line'><span class="no">Class</span> <span class="no">Child</span> <span class="o">&lt;</span> <span class="no">Dad</span>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">hi</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
 </span><span class='line'>    <span class="k">super</span>
-</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;World&quot;</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="nb">name</span>
 </span><span class='line'>  <span class="k">end</span>
 </span><span class='line'><span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'><span class="no">Child</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">hi</span>
+</span><span class='line'><span class="no">Child</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;alessandro&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">hi</span>
 </span><span class='line'>
 </span><span class='line'><span class="o">=&gt;</span> <span class="ss">ArgumentError</span><span class="p">:</span> <span class="n">wrong</span> <span class="n">number</span> <span class="n">of</span> <span class="n">arguments</span> <span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="mi">0</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
@@ -286,20 +276,20 @@ Exemplo:</p>
 <span class='line-number'>16</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Dad</span>
 </span><span class='line'>  <span class="k">def</span> <span class="nf">hi</span>
-</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;Hello&quot;</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;Hello &quot;</span>
 </span><span class='line'>  <span class="k">end</span>
 </span><span class='line'><span class="k">end</span>
 </span><span class='line'>
 </span><span class='line'><span class="no">Class</span> <span class="no">Child</span> <span class="o">&lt;</span> <span class="no">Dad</span>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">hi</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
 </span><span class='line'>    <span class="k">super</span><span class="p">()</span>
-</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;World&quot;</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="nb">name</span>
 </span><span class='line'>  <span class="k">end</span>
 </span><span class='line'><span class="k">end</span>
 </span><span class='line'>
-</span><span class='line'><span class="no">Child</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">hi</span>
-</span><span class='line'><span class="no">Hello</span>
-</span><span class='line'><span class="no">World</span>
+</span><span class='line'><span class="no">Child</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;alessandro&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">hi</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="no">Hello</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="n">alessandro</span>
 </span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
