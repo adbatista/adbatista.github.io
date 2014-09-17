@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://alessandrodias.herokuapp.com/sitemap.xml 

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: oop | Alessandro Dias]]></title>
+  <link href="http://alessandrodias.herokuapp.com/blog/categories/oop/atom.xml" rel="self"/>
+  <link href="http://alessandrodias.herokuapp.com/"/>
+  <updated>2014-09-17T11:23:09-03:00</updated>
+  <id>http://alessandrodias.herokuapp.com/</id>
+  <author>
+    <name><![CDATA[Alessandro Dias Batista]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[construtores em ruby]]></title>
+    <link href="http://alessandrodias.herokuapp.com/blog/2014/01/23/construtores-em-ruby/"/>
+    <updated>2014-01-23T15:53:00-02:00</updated>
+    <id>http://alessandrodias.herokuapp.com/blog/2014/01/23/construtores-em-ruby</id>
+    <content type="html"><![CDATA[<p>Você ja deve ter percebido que diferente do C#, Java e outras linguagens OO, em Ruby a criação de um novo objeto é feita pelo método <code>new</code>, mas como é feita a criação de um objeto em Ruby?
+Primeiro faremos uma lista do que precisamos para para instanciar um novo objeto.</p>
+
+<ol>
+<li>Alocar espaço para um objeto vazio</li>
+<li>Setar o estado inicial do objeto</li>
+<li>Retornar a referência para o objeto alocado</li>
+</ol>
+
+
+<p>Após feita a lista vamos criar um objeto com um construtor personalizado com cada item da lista</p>
+
+<p>```ruby
+class Book
+  def self.custom_new(title, author)</p>
+
+<pre><code>instance = allocate # Aloca espaço para um novo objeto vazio
+instance.custom_initialize(title, author)
+instance # Retorna a referência do objeto
+</code></pre>
+
+<p>  end</p>
+
+<p>  def custom_initialize(title, author)</p>
+
+<pre><code>@title, @author = title, author
+</code></pre>
+
+<p>  end
+end</p>
+
+<p>Book.custom_new(&lsquo;Title&rsquo;,&lsquo;Alessandro&rsquo;)
+ => #&lt;Book:0x00000003607978 @author=&ldquo;ale&rdquo;, @title=&ldquo;Title&rdquo;>
+<code>``
+No caso acima criamos uma classe</code>Book<code>que possui um construtor personalizado, claro que poderíamos sobrescrever o método</code>new<code>e/ou</code>initialize`, mas fiz dessa forma apena para mostrar que é possivel fazer assim.</p>
+
+<p>Caso queira saber sobre o método <code>allocate</code> aqui está a <a href="http://www.ruby-doc.org/core-2.1.0/Class.html#method-i-allocate">documentação</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Cuidado ao chamar métodos da super classe]]></title>
+    <link href="http://alessandrodias.herokuapp.com/blog/2014/01/20/cuidado-ao-usar-super-em-seus-metodos/"/>
+    <updated>2014-01-20T19:59:00-02:00</updated>
+    <id>http://alessandrodias.herokuapp.com/blog/2014/01/20/cuidado-ao-usar-super-em-seus-metodos</id>
+    <content type="html"><![CDATA[<p>Lendo um pouco sobre herança em Ruby descobri uma coisa interessante, ao usar o método <code>super</code> em algum método, pode ocorrer da erro caso o desenvolvedor não preste atenção. Quando você redefine um método e chama <code>super</code> sem parênteses e sem argumentos, o Ruby irá pegar os parâmetros passados para o método na subclasse passar de forma implícita para o método da superclasse, se os parâmetros do método na superclasse forem diferentes dos parâmetros no método redefinido irá resultar em erro.
+Exemplo:</p>
+
+<p>```ruby
+class Dad
+  def hi</p>
+
+<pre><code>puts "Hello "
+</code></pre>
+
+<p>  end
+end</p>
+
+<p>Class Child &lt; Dad
+  def hi(name)</p>
+
+<pre><code>super
+puts name
+</code></pre>
+
+<p>  end
+end</p>
+
+<p>Child.new(&lsquo;alessandro&rsquo;).hi</p>
+
+<p>=> ArgumentError: wrong number of arguments (1 for 0)
+```</p>
+
+<p>Como resolver isso? Simples.
+Caso o método da superclasse não receba parâmetros chame o método super com parênteses <code>super()</code>
+Exemplo:</p>
+
+<p>```ruby
+class Dad
+  def hi</p>
+
+<pre><code>puts "Hello "
+</code></pre>
+
+<p>  end
+end</p>
+
+<p>Class Child &lt; Dad
+  def hi(name)</p>
+
+<pre><code>super()
+puts name
+</code></pre>
+
+<p>  end
+end</p>
+
+<p>Child.new(&lsquo;alessandro&rsquo;).hi
+=> Hello
+=> alessandro
+```</p>
+]]></content>
+  </entry>
+  
+</feed>
