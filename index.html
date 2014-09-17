@@ -18,11 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-<<<<<<< HEAD
   <link rel="canonical" href="http://alessandrodias.herokuapp.com">
-=======
-  <link rel="canonical" href="http://adbatista.github.io">
->>>>>>> e5d67c88eecff74efb514767126aa960a1adcf54
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Alessandro Dias" type="application/atom+xml">
@@ -64,11 +60,7 @@
   
 <form action="http://google.com/search" method="get">
   <fieldset role="search">
-<<<<<<< HEAD
     <input type="hidden" name="q" value="site:alessandrodias.herokuapp.com" />
-=======
-    <input type="hidden" name="q" value="site:adbatista.github.io" />
->>>>>>> e5d67c88eecff74efb514767126aa960a1adcf54
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
   </fieldset>
 </form>
@@ -374,11 +366,7 @@ Primeiro faremos uma lista do que precisamos para para instanciar um novo objeto
       
   <header>
     
-<<<<<<< HEAD
       <h1 class="entry-title"><a href="/blog/2014/01/20/cuidado-ao-usar-super-em-seus-metodos/">Cuidado Ao Chamar Métodos Da Super Classe</a></h1>
-=======
-      <h1 class="entry-title"><a href="/blog/2014/01/20/cuidado-ao-usar-super-em-seus-metodos/">Cuidado Ao Chamar Métodos Da Classe Pai</a></h1>
->>>>>>> e5d67c88eecff74efb514767126aa960a1adcf54
     
     
       <p class="meta">
@@ -424,16 +412,11 @@ Exemplo:</p>
 <span class='line-number'>16</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Dad</span>
 </span><span class='line'>  <span class="k">def</span> <span class="nf">hi</span>
-<<<<<<< HEAD
 </span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;Hello &quot;</span>
-=======
-</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;Hello&quot;</span>
->>>>>>> e5d67c88eecff74efb514767126aa960a1adcf54
 </span><span class='line'>  <span class="k">end</span>
 </span><span class='line'><span class="k">end</span>
 </span><span class='line'>
 </span><span class='line'><span class="no">Class</span> <span class="no">Child</span> <span class="o">&lt;</span> <span class="no">Dad</span>
-<<<<<<< HEAD
 </span><span class='line'>  <span class="k">def</span> <span class="nf">hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
 </span><span class='line'>    <span class="k">super</span>
 </span><span class='line'>    <span class="nb">puts</span> <span class="nb">name</span>
@@ -441,15 +424,6 @@ Exemplo:</p>
 </span><span class='line'><span class="k">end</span>
 </span><span class='line'>
 </span><span class='line'><span class="no">Child</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;alessandro&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">hi</span>
-=======
-</span><span class='line'>  <span class="k">def</span> <span class="nf">hi</span>
-</span><span class='line'>    <span class="k">super</span>
-</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;World&quot;</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="no">Child</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">hi</span>
->>>>>>> e5d67c88eecff74efb514767126aa960a1adcf54
 </span><span class='line'>
 </span><span class='line'><span class="o">=&gt;</span> <span class="ss">ArgumentError</span><span class="p">:</span> <span class="n">wrong</span> <span class="n">number</span> <span class="n">of</span> <span class="n">arguments</span> <span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="mi">0</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
@@ -477,16 +451,11 @@ Exemplo:</p>
 <span class='line-number'>16</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Dad</span>
 </span><span class='line'>  <span class="k">def</span> <span class="nf">hi</span>
-<<<<<<< HEAD
 </span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;Hello &quot;</span>
-=======
-</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;Hello&quot;</span>
->>>>>>> e5d67c88eecff74efb514767126aa960a1adcf54
 </span><span class='line'>  <span class="k">end</span>
 </span><span class='line'><span class="k">end</span>
 </span><span class='line'>
 </span><span class='line'><span class="no">Class</span> <span class="no">Child</span> <span class="o">&lt;</span> <span class="no">Dad</span>
-<<<<<<< HEAD
 </span><span class='line'>  <span class="k">def</span> <span class="nf">hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
 </span><span class='line'>    <span class="k">super</span><span class="p">()</span>
 </span><span class='line'>    <span class="nb">puts</span> <span class="nb">name</span>
@@ -496,17 +465,6 @@ Exemplo:</p>
 </span><span class='line'><span class="no">Child</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;alessandro&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">hi</span>
 </span><span class='line'><span class="o">=&gt;</span> <span class="no">Hello</span>
 </span><span class='line'><span class="o">=&gt;</span> <span class="n">alessandro</span>
-=======
-</span><span class='line'>  <span class="k">def</span> <span class="nf">hi</span>
-</span><span class='line'>    <span class="k">super</span><span class="p">()</span>
-</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;World&quot;</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="no">Child</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">hi</span>
-</span><span class='line'><span class="no">Hello</span>
-</span><span class='line'><span class="no">World</span>
->>>>>>> e5d67c88eecff74efb514767126aa960a1adcf54
 </span></code></pre></td></tr></table></div></figure>
 
 </div>
@@ -640,11 +598,7 @@ pesquisei sobre e resumindo é a sintaxe para splat operator em ruby, ex:</p>
       </li>
     
       <li class="post">
-<<<<<<< HEAD
         <a href="/blog/2014/01/20/cuidado-ao-usar-super-em-seus-metodos/">Cuidado Ao Chamar Métodos Da Super Classe</a>
-=======
-        <a href="/blog/2014/01/20/cuidado-ao-usar-super-em-seus-metodos/">Cuidado Ao Chamar Métodos Da Classe Pai</a>
->>>>>>> e5d67c88eecff74efb514767126aa960a1adcf54
       </li>
     
       <li class="post">

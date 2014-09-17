@@ -2,17 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Alessandro Dias]]></title>
-<<<<<<< HEAD
   <link href="http://alessandrodias.herokuapp.com/atom.xml" rel="self"/>
   <link href="http://alessandrodias.herokuapp.com/"/>
   <updated>2014-09-17T11:23:09-03:00</updated>
   <id>http://alessandrodias.herokuapp.com/</id>
-=======
-  <link href="http://adbatista.github.io/atom.xml" rel="self"/>
-  <link href="http://adbatista.github.io/"/>
-  <updated>2014-09-15T23:08:49-03:00</updated>
-  <id>http://adbatista.github.io/</id>
->>>>>>> e5d67c88eecff74efb514767126aa960a1adcf54
   <author>
     <name><![CDATA[Alessandro Dias Batista]]></name>
     
@@ -22,15 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[o parâmetro &amp; (Ampersand)]]></title>
-<<<<<<< HEAD
     <link href="http://alessandrodias.herokuapp.com/blog/2014/01/25/parametro-and-ampersand/"/>
     <updated>2014-01-25T17:10:00-02:00</updated>
     <id>http://alessandrodias.herokuapp.com/blog/2014/01/25/parametro-and-ampersand</id>
-=======
-    <link href="http://adbatista.github.io/blog/2014/01/25/parametro-and-ampersand/"/>
-    <updated>2014-01-25T17:10:00-02:00</updated>
-    <id>http://adbatista.github.io/blog/2014/01/25/parametro-and-ampersand</id>
->>>>>>> e5d67c88eecff74efb514767126aa960a1adcf54
     <content type="html"><![CDATA[<p>Para que serve o &amp; antes de um parâmetro em Ruby?</p>
 
 <p>O &amp; antes de algum parâmetro é utilizado basicamente de duas formas:</p>
@@ -134,15 +121,9 @@ o resultado final seria algo equivalente a isso:</p>
   
   <entry>
     <title type="html"><![CDATA[classes são objetos]]></title>
-<<<<<<< HEAD
     <link href="http://alessandrodias.herokuapp.com/blog/2014/01/24/classes-sao-objetos/"/>
     <updated>2014-01-24T00:49:00-02:00</updated>
     <id>http://alessandrodias.herokuapp.com/blog/2014/01/24/classes-sao-objetos</id>
-=======
-    <link href="http://adbatista.github.io/blog/2014/01/24/classes-sao-objetos/"/>
-    <updated>2014-01-24T00:49:00-02:00</updated>
-    <id>http://adbatista.github.io/blog/2014/01/24/classes-sao-objetos</id>
->>>>>>> e5d67c88eecff74efb514767126aa960a1adcf54
     <content type="html"><![CDATA[<p>No último post falei sobre a construção de objetos em Ruby, nesse vamos falar sobre classes.<br/>
 Uma caracteristica das classes é que elas também são objetos. Então você pode definir uma classe
 da forma mais comum.</p>
@@ -178,15 +159,9 @@ Outra coisa interessante sobre classes é que <a href="http://nomedojogo.com/200
   
   <entry>
     <title type="html"><![CDATA[construtores em ruby]]></title>
-<<<<<<< HEAD
     <link href="http://alessandrodias.herokuapp.com/blog/2014/01/23/construtores-em-ruby/"/>
     <updated>2014-01-23T15:53:00-02:00</updated>
     <id>http://alessandrodias.herokuapp.com/blog/2014/01/23/construtores-em-ruby</id>
-=======
-    <link href="http://adbatista.github.io/blog/2014/01/23/construtores-em-ruby/"/>
-    <updated>2014-01-23T15:53:00-02:00</updated>
-    <id>http://adbatista.github.io/blog/2014/01/23/construtores-em-ruby</id>
->>>>>>> e5d67c88eecff74efb514767126aa960a1adcf54
     <content type="html"><![CDATA[<p>Você ja deve ter percebido que diferente do C#, Java e outras linguagens OO, em Ruby a criação de um novo objeto é feita pelo método <code>new</code>, mas como é feita a criação de um objeto em Ruby?
 Primeiro faremos uma lista do que precisamos para para instanciar um novo objeto.</p>
 
@@ -237,17 +212,10 @@ Primeiro faremos uma lista do que precisamos para para instanciar um novo objeto
   </entry>
   
   <entry>
-<<<<<<< HEAD
     <title type="html"><![CDATA[Cuidado ao chamar métodos da super classe]]></title>
     <link href="http://alessandrodias.herokuapp.com/blog/2014/01/20/cuidado-ao-usar-super-em-seus-metodos/"/>
     <updated>2014-01-20T19:59:00-02:00</updated>
     <id>http://alessandrodias.herokuapp.com/blog/2014/01/20/cuidado-ao-usar-super-em-seus-metodos</id>
-=======
-    <title type="html"><![CDATA[Cuidado ao chamar métodos da classe pai]]></title>
-    <link href="http://adbatista.github.io/blog/2014/01/20/cuidado-ao-usar-super-em-seus-metodos/"/>
-    <updated>2014-01-20T19:59:00-02:00</updated>
-    <id>http://adbatista.github.io/blog/2014/01/20/cuidado-ao-usar-super-em-seus-metodos</id>
->>>>>>> e5d67c88eecff74efb514767126aa960a1adcf54
     <content type="html"><![CDATA[<p>Lendo um pouco sobre herança em Ruby descobri uma coisa interessante, ao usar o método <code>super</code> em algum método, pode ocorrer da erro caso o desenvolvedor não preste atenção. Quando você redefine um método e chama <code>super</code> sem parênteses e sem argumentos, o Ruby irá pegar os parâmetros passados para o método na subclasse passar de forma implícita para o método da superclasse, se os parâmetros do método na superclasse forem diferentes dos parâmetros no método redefinido irá resultar em erro.
 Exemplo:</p>
 
@@ -269,16 +237,11 @@ Exemplo:</p>
 <span class='line-number'>16</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Dad</span>
 </span><span class='line'>  <span class="k">def</span> <span class="nf">hi</span>
-<<<<<<< HEAD
 </span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;Hello &quot;</span>
-=======
-</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;Hello&quot;</span>
->>>>>>> e5d67c88eecff74efb514767126aa960a1adcf54
 </span><span class='line'>  <span class="k">end</span>
 </span><span class='line'><span class="k">end</span>
 </span><span class='line'>
 </span><span class='line'><span class="no">Class</span> <span class="no">Child</span> <span class="o">&lt;</span> <span class="no">Dad</span>
-<<<<<<< HEAD
 </span><span class='line'>  <span class="k">def</span> <span class="nf">hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
 </span><span class='line'>    <span class="k">super</span>
 </span><span class='line'>    <span class="nb">puts</span> <span class="nb">name</span>
@@ -286,15 +249,6 @@ Exemplo:</p>
 </span><span class='line'><span class="k">end</span>
 </span><span class='line'>
 </span><span class='line'><span class="no">Child</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;alessandro&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">hi</span>
-=======
-</span><span class='line'>  <span class="k">def</span> <span class="nf">hi</span>
-</span><span class='line'>    <span class="k">super</span>
-</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;World&quot;</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="no">Child</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">hi</span>
->>>>>>> e5d67c88eecff74efb514767126aa960a1adcf54
 </span><span class='line'>
 </span><span class='line'><span class="o">=&gt;</span> <span class="ss">ArgumentError</span><span class="p">:</span> <span class="n">wrong</span> <span class="n">number</span> <span class="n">of</span> <span class="n">arguments</span> <span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="mi">0</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
@@ -322,16 +276,11 @@ Exemplo:</p>
 <span class='line-number'>16</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Dad</span>
 </span><span class='line'>  <span class="k">def</span> <span class="nf">hi</span>
-<<<<<<< HEAD
 </span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;Hello &quot;</span>
-=======
-</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;Hello&quot;</span>
->>>>>>> e5d67c88eecff74efb514767126aa960a1adcf54
 </span><span class='line'>  <span class="k">end</span>
 </span><span class='line'><span class="k">end</span>
 </span><span class='line'>
 </span><span class='line'><span class="no">Class</span> <span class="no">Child</span> <span class="o">&lt;</span> <span class="no">Dad</span>
-<<<<<<< HEAD
 </span><span class='line'>  <span class="k">def</span> <span class="nf">hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
 </span><span class='line'>    <span class="k">super</span><span class="p">()</span>
 </span><span class='line'>    <span class="nb">puts</span> <span class="nb">name</span>
@@ -341,17 +290,6 @@ Exemplo:</p>
 </span><span class='line'><span class="no">Child</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;alessandro&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">hi</span>
 </span><span class='line'><span class="o">=&gt;</span> <span class="no">Hello</span>
 </span><span class='line'><span class="o">=&gt;</span> <span class="n">alessandro</span>
-=======
-</span><span class='line'>  <span class="k">def</span> <span class="nf">hi</span>
-</span><span class='line'>    <span class="k">super</span><span class="p">()</span>
-</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;World&quot;</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="no">Child</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">hi</span>
-</span><span class='line'><span class="no">Hello</span>
-</span><span class='line'><span class="no">World</span>
->>>>>>> e5d67c88eecff74efb514767126aa960a1adcf54
 </span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
@@ -359,15 +297,9 @@ Exemplo:</p>
   
   <entry>
     <title type="html"><![CDATA[O que é o splat operator do ruby?]]></title>
-<<<<<<< HEAD
     <link href="http://alessandrodias.herokuapp.com/blog/2013/09/15/o-que-e-o-splat-operator-do-ruby/"/>
     <updated>2013-09-15T13:25:00-03:00</updated>
     <id>http://alessandrodias.herokuapp.com/blog/2013/09/15/o-que-e-o-splat-operator-do-ruby</id>
-=======
-    <link href="http://adbatista.github.io/blog/2013/09/15/o-que-e-o-splat-operator-do-ruby/"/>
-    <updated>2013-09-15T13:25:00-03:00</updated>
-    <id>http://adbatista.github.io/blog/2013/09/15/o-que-e-o-splat-operator-do-ruby</id>
->>>>>>> e5d67c88eecff74efb514767126aa960a1adcf54
     <content type="html"><![CDATA[<p>Esses dias olhando código no GitHub vi um trecho como esse: <code>def example(*b)</code>
 O que esse código faz não vem ao caso, mas olhei o <code>*b</code> e pensei, oque que é esse * antes da variável me veio na hora ponteiro, mas ruby não possui ponteiros, então oque <code>*b</code> faz?
 pesquisei sobre e resumindo é a sintaxe para splat operator em ruby, ex:</p>

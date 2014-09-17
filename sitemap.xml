@@ -1,18 +1,13 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-<<<<<<< HEAD
         <loc>
             http://alessandrodias.herokuapp.com/blog/2013/09/15/o-que-e-o-splat-operator-do-ruby/
         </loc>
-=======
-        <loc>http://adbatista.github.io/blog/2013/09/15/o-que-e-o-splat-operator-do-ruby/</loc>
->>>>>>> e5d67c88eecff74efb514767126aa960a1adcf54
         <lastmod>2014-01-21T01:11:57-02:00</lastmod>
     </url>
     <url>
         <loc>
-<<<<<<< HEAD
             http://alessandrodias.herokuapp.com/blog/2014/01/20/cuidado-ao-usar-super-em-seus-metodos/
         </loc>
         <lastmod>2014-09-16T23:32:58-03:00</lastmod>
@@ -40,34 +35,5 @@
     <url>
         <loc>http://alessandrodias.herokuapp.com/blog/archives/</loc>
         <lastmod>2014-09-16T23:32:58-03:00</lastmod>
-=======
-            http://adbatista.github.io/blog/2014/01/20/cuidado-ao-usar-super-em-seus-metodos/
-        </loc>
-        <lastmod>2014-01-21T02:13:32-02:00</lastmod>
-    </url>
-    <url>
-        <loc>http://adbatista.github.io/blog/2014/01/23/construtores-em-ruby/</loc>
-        <lastmod>2014-01-24T00:46:21-02:00</lastmod>
-    </url>
-    <url>
-        <loc>http://adbatista.github.io/blog/2014/01/24/classes-sao-objetos/</loc>
-        <lastmod>2014-01-24T23:41:23-02:00</lastmod>
-    </url>
-    <url>
-        <loc>http://adbatista.github.io/blog/2014/01/25/parametro-and-ampersand/</loc>
-        <lastmod>2014-01-26T04:42:48-02:00</lastmod>
-    </url>
-    <url>
-        <loc>http://adbatista.github.io/robots.txt</loc>
-        <lastmod>2014-01-20T16:35:59-02:00</lastmod>
-    </url>
-    <url>
-        <loc>http://adbatista.github.io/</loc>
-        <lastmod>2014-01-26T04:42:48-02:00</lastmod>
-    </url>
-    <url>
-        <loc>http://adbatista.github.io/blog/archives/</loc>
-        <lastmod>2014-01-26T04:42:48-02:00</lastmod>
->>>>>>> e5d67c88eecff74efb514767126aa960a1adcf54
     </url>
 </urlset>

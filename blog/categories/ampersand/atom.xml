@@ -2,17 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: ampersand | Alessandro Dias]]></title>
-<<<<<<< HEAD
   <link href="http://alessandrodias.herokuapp.com/blog/categories/ampersand/atom.xml" rel="self"/>
   <link href="http://alessandrodias.herokuapp.com/"/>
   <updated>2014-09-17T11:23:09-03:00</updated>
   <id>http://alessandrodias.herokuapp.com/</id>
-=======
-  <link href="http://adbatista.github.io/blog/categories/ampersand/atom.xml" rel="self"/>
-  <link href="http://adbatista.github.io/"/>
-  <updated>2014-09-15T23:08:49-03:00</updated>
-  <id>http://adbatista.github.io/</id>
->>>>>>> e5d67c88eecff74efb514767126aa960a1adcf54
   <author>
     <name><![CDATA[Alessandro Dias Batista]]></name>
     
@@ -22,15 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[o parâmetro &amp; (Ampersand)]]></title>
-<<<<<<< HEAD
     <link href="http://alessandrodias.herokuapp.com/blog/2014/01/25/parametro-and-ampersand/"/>
     <updated>2014-01-25T17:10:00-02:00</updated>
     <id>http://alessandrodias.herokuapp.com/blog/2014/01/25/parametro-and-ampersand</id>
-=======
-    <link href="http://adbatista.github.io/blog/2014/01/25/parametro-and-ampersand/"/>
-    <updated>2014-01-25T17:10:00-02:00</updated>
-    <id>http://adbatista.github.io/blog/2014/01/25/parametro-and-ampersand</id>
->>>>>>> e5d67c88eecff74efb514767126aa960a1adcf54
     <content type="html"><![CDATA[<p>Para que serve o &amp; antes de um parâmetro em Ruby?</p>
 
 <p>O &amp; antes de algum parâmetro é utilizado basicamente de duas formas:</p>
