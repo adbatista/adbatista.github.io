@@ -1,4 +1,8 @@
 User-agent: *
 Disallow: 
 
+<<<<<<< HEAD
 Sitemap: http://alessandrodias.herokuapp.com/sitemap.xml 
+=======
+Sitemap: http://adbatista.github.io/sitemap.xml 
+>>>>>>> e5d67c88eecff74efb514767126aa960a1adcf54
