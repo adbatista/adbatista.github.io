@@ -20,12 +20,12 @@
 
 title: Alessandro Dias
 # email: your-email@example.com
+author: ""
 description: ""
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://adbatista.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-# twitter_username: jekyllrb
 github_username: adbatista
-# simple_search: http://google.com/search
+linkedin_username: alessandrodbatista
 google_analytics: G-J7YM50Y9ZZ
 
 # Build settings
