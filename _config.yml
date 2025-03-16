@@ -26,6 +26,7 @@ url: "http://adbatista.github.io" # the base hostname & protocol for your site, 
 # twitter_username: jekyllrb
 github_username: adbatista
 # simple_search: http://google.com/search
+google_analytics: G-J7YM50Y9ZZ
 
 # Build settings
 theme: minima
