@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "o parâmetro &amp; (Ampersand)"
+title: "o parâmetro '&' (Ampersand)"
 date: 2014-01-25 17:10
 comments: true
 categories: [ruby, ampersand]
@@ -22,14 +22,14 @@ end
   awesome_method &parameter
 ```
 
-A primeira forma serve para deixar explícito que o seu método recebe um bloco.  
-Já a segunda forma funciona assim:  
+A primeira forma serve para deixar explícito que o seu método recebe um bloco.
+Já a segunda forma funciona assim:
 pega o parâmetro, chama o método `to_proc` e o passa como bloco, idependente de o método ter deixado o bloco explícito ou não. Então basta que o objeto passado responda a `to_proc`. Você ja deve ter visto parecido com isso:
 
 ```ruby
   @users.map &:name
 ```
-E uma coisa que sempre quis saber é "como um símbolo passado como parâmetro irá no exemplo acima irá retornar o nome de todos usuários?".  
+E uma coisa que sempre quis saber é "como um símbolo passado como parâmetro irá no exemplo acima irá retornar o nome de todos usuários?".
 Pesquisei um pouco, <a href="http://stackoverflow.com/questions/1217088/what-does-mapname-mean-in-ruby#answer-1217114" target="_blank">e achei como isso é feito</a>
 Símbolos implementam o `to_proc`, tá e dai, como funciona esse to_proc`?
 
