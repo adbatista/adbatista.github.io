@@ -1,0 +1,81 @@
+---
+layout: post
+title: "How does Rack work?"
+date: 2025-04-12
+comments: true
+categories: [ruby, rails]
+---
+Sometimes, developers who use Rails don't understand Rack, what it does, or what it's for.
+
+To explain this, let's go back to early 2007. At that time, Rails was at version 1.2, Merb was taking its first steps far from merging with Rails, and other frameworks like Camping, Nitro, Ramaze, and Iowa also existed. Just like today, we need an app server to run our applications. We had options such as WEBrick, Mongrel, and FastCGI back then.
+
+The problem was that each app server had its own interface, startup process, and parameters. This meant frameworks had to implement specific handlers for each of the most popular app servers and allow developers to create adapters for unsupported servers. The result? A lot of code duplication across existing frameworks and those yet to come.
+
+For example, we have [`mongrel_rails`](https://github.com/mongrel/mongrel/blob/74290abc9ebd287542b2dcc0133fa41d33e5177b/bin/mongrel_rails), the handlers for [`FastCGI`](https://github.com/rails/rails/blob/v1.2.1/railties/lib/fcgi_handler.rb) and [`WEBrick`](https://github.com/rails/rails/blob/v1.2.1/railties/lib/webrick_server.rb) from Rails, just as Camping also has for [`FastCGI`](https://github.com/camping/camping/blob/a91832901e4d68974b5237a02e26aaf5f3a4a166/lib/camping/fastcgi.rb) and [`WEBrick`](https://github.com/camping/camping/blob/a91832901e4d68974b5237a02e26aaf5f3a4a166/lib/camping/webrick.rb).
+
+That’s when Rack emerged—a simple API inspired by Python’s WSGI.  It enabled communication between frameworks and servers without requiring the handlers previously required in each framework. After its adoption, frameworks no longer needed to announce integration with specific servers; they just had to say they were Rack-compatible. On the server side, it was also straightforward: they only needed to add a Rack handler, making server swapping a plug-and-play experience.
+
+### So, how do you create a Rack-compatible application?
+
+With a lambda, you can already have an app up and running. Check out a simple "Hello World" example below. Create a `config.ru` file with the following code:
+
+```ruby
+my_app = ->(env) { [200, {}, ["Hello World!"]] }
+
+run my_app
+
+```
+
+run `gem install rackup` to install the `rackup` gem (previously part of the Rack gem), run the `rackup` command, and your Rack app will be running on default port 9292:
+
+```bash
+~ curl localhost:9292
+Hello World!
+
+```
+
+### What makes up a Rack app?
+
+Any object that responds to the `.call` method, accepting an `env` argument (a hash representing the HTTP request) and returning an array with three elements, can be considered a Rack app.
+
+These elements are:
+
+1. The HTTP status of the response;
+2. A Hash with HTTP headers;
+3.  An object that responds to `#each` or `#call` as the response body.
+
+### Middlewares
+
+Another Rack feature is the use of middlewares, which act as filters for the request or response. Middlewares are themselves Rack apps, following the same API. The Rack gem allows them to be stacked in layers. Here’s an example of a middleware:
+
+```ruby
+class MyMiddleware
+  def initialize(app)
+    @app = app
+  end
+
+  def call(env)
+    if env["Content-Type"] != "text/html"
+      return [401, {"Content-Type" => "text/plain"}, ["Not Authorized!"]]
+    end
+    @app.call(env)
+  end
+end
+
+```
+
+To use it, modify the `config.ru` file from the previous example:
+
+```ruby
+require 'my_middleware'
+
+my_app = -> (env) { [200, {}, ["Hello World!"]] }
+
+use MyMiddleware
+run my_app
+
+```
+
+In this case, the middleware checks if the Content-Type is `text/html`. If it isn’t, it returns a 401 error and halts processing; otherwise, it passes the request along with `@app.call(env)`.
+
+Rack emerged as a solution to a common problem in the early 2000s: the lack of standardization between frameworks and servers in Ruby. By offering a simple API, it eliminated code duplication and made web application development more modular and less coupled. Rack remains a cornerstone of the Ruby ecosystem, supporting frameworks like Rails and simplifying developers lives to this day.
