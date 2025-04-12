@@ -35,13 +35,13 @@ Hello World!
 
 ### What makes up a Rack app?
 
-Any object that responds to the `.call` method, accepting an `env` argument (a hash representing the HTTP request) and returning an array with three elements, can be considered a Rack app.
+Any object that responds to the `#call` method, accepting an `env` argument (a hash representing the HTTP request) and returning an array with three elements, can be considered a Rack app.
 
 These elements are:
 
-1. The HTTP status of the response;
-2. A Hash with HTTP headers;
-3.  An object that responds to `#each` or `#call` as the response body.
+0. The HTTP status of the response;
+0. A Hash with HTTP headers;
+0. An object that responds to `#each` or `#call` as the response body.
 
 ### Middlewares
 
@@ -54,13 +54,12 @@ class MyMiddleware
   end
 
   def call(env)
-    if env["Content-Type"] != "text/html"
-      return [401, {"Content-Type" => "text/plain"}, ["Not Authorized!"]]
+    unless env["HTTP_ACCEPT"].include? "text/html"
+      return [401, {"content-type" => "text/plain"}, ["Not Authorized!"]]
     end
     @app.call(env)
   end
 end
-
 ```
 
 To use it, modify the `config.ru` file from the previous example:
@@ -75,6 +74,21 @@ run my_app
 
 ```
 
-In this case, the middleware checks if the Content-Type is `text/html`. If it isn’t, it returns a 401 error and halts processing; otherwise, it passes the request along with `@app.call(env)`.
+In this case, the middleware checks if the Accept header contains `text/html`. If not, it returns a 401 error and halts processing; otherwise, it passes the request along with `@app.call(env)`.
+```bash
+$ curl -i localhost:9292 -H Accept:text/html
+HTTP/1.1 200 OK
+Content-Length: 12
+
+Hello World!
+
+$ curl -i localhost:9292
+HTTP/1.1 401 Unauthorized
+content-type: text/plain
+Content-Length: 15
+
+Not Authorized!
+```
+
 
 Rack emerged as a solution to a common problem in the early 2000s: the lack of standardization between frameworks and servers in Ruby. By offering a simple API, it eliminated code duplication and made web application development more modular and less coupled. Rack remains a cornerstone of the Ruby ecosystem, supporting frameworks like Rails and simplifying developers lives to this day.
