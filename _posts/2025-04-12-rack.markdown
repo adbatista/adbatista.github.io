@@ -2,8 +2,7 @@
 layout: post
 title: "How does Rack work?"
 date: 2025-04-12
-comments: true
-categories: [ruby, rails]
+lang: en
 ---
 Sometimes, developers who use Rails don't understand Rack, what it does, or what it's for.
 

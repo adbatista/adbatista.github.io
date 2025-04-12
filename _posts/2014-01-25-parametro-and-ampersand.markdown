@@ -2,8 +2,7 @@
 layout: post
 title: "o parâmetro '&' (Ampersand)"
 date: 2014-01-25 17:10
-comments: true
-categories: [ruby, ampersand]
+lang: pt-BR
 ---
 Para que serve o &amp; antes de um parâmetro em Ruby?
 

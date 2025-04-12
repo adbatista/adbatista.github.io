@@ -2,10 +2,9 @@
 layout: post
 title: "classes são objetos"
 date: 2014-01-24 00:49
-comments: true
-categories: ruby
+lang: pt-BR
 ---
-No último post falei sobre a construção de objetos em Ruby, nesse vamos falar sobre classes.  
+No último post falei sobre a construção de objetos em Ruby, nesse vamos falar sobre classes.
 Uma caracteristica das classes é que elas também são objetos. Então você pode definir uma classe
 da forma mais comum.
 
@@ -23,5 +22,5 @@ MyClass = Class.new(SuperClass) do
   end
 end
 ```
-As duas abordagens são válidas, a primeira é apenas um _syntax sugar_.  
+As duas abordagens são válidas, a primeira é apenas um _syntax sugar_.
 Outra coisa interessante sobre classes é que <a href="http://nomedojogo.com/2009/12/24/classes-sao-modulos-no-ruby/" title="Classes são módulos no Ruby" target="_blank">elas também são módulos</a>

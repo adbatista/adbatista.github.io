@@ -2,8 +2,7 @@
 layout: post
 title: "construtores em ruby"
 date: 2014-01-23 15:53
-comments: true
-categories: [ruby, oop]
+lang: pt-BR
 ---
 Você ja deve ter percebido que diferente do C#, Java e outras linguagens OO, em Ruby a criação de um novo objeto é feita pelo método `new`, mas como é feita a criação de um objeto em Ruby?
 Primeiro faremos uma lista do que precisamos para para instanciar um novo objeto.
