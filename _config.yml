@@ -24,13 +24,13 @@ author: ""
 description: ""
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://adbatista.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-github_username: adbatista
-linkedin_username: alessandrodbatista
 google_analytics: G-J7YM50Y9ZZ
 languages: ["en", "pt-BR"]
 default_lang: "en"
 exclude_from_localization: ["javascript", "images", "css", "public", "sitemap"]
 parallel_localization: true
+github_username: adbatista
+linkedin_username: alessandrodbatista
 
 # Build settings
 theme: minima
