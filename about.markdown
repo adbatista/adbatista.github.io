@@ -11,3 +11,4 @@ You can find me on:
 - [Hackerrank](https://www.hackerrank.com/profile/alessandrodbati1)
 - [Linkedin](https://www.linkedin.com/in/alessandrodbatista/)
 - [X](https://x.com/adbatista1)
+- [GitHub](https://github.com/adbatista)
