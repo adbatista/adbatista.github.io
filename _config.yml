@@ -31,11 +31,15 @@ exclude_from_localization: ["javascript", "images", "css", "public", "sitemap"]
 parallel_localization: true
 github_username: adbatista
 linkedin_username: alessandrodbatista
+comments: true
+disqus:
+  shortname: adbatista
 
 # Build settings
 theme: minima
 plugins:
   - jekyll-polyglot
+
 
 whitelist:
   - jekyll-polyglot
